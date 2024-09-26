@@ -59,11 +59,11 @@
 }
 @keyframes rotate2{
     0% {
-        transform:translate(-50%, -50%) rotate(0deg)  ;
+        transform:rotate(0deg)  ;
     }
     
     100% {
-        transform:translate(-50%, -50%) rotate(360deg) ;
+        transform:rotate(360deg) ;
     }
 }
 @keyframes swing{
@@ -86,10 +86,24 @@
     0% {
         transform:  rotate(180deg) translateX(100px) rotate(120deg);
     }
-    /* 75% {
-        transform:  rotate(420deg) translateX(100px) rotate(170deg);
-    } */
     100% {
         transform:  rotate(540deg) translateX(100px) rotate(130deg);
     }
 }
+@keyframes wave {
+    0% {
+      transform: translateY(0px);
+    }
+    25% {
+      transform: translateY(15px);
+    }
+    50% {
+      transform: translateY(0px);
+    }
+    75% {
+      transform: translateY(-15px);
+    }
+    100% {
+      transform: translateY(0px);
+    }
+  }
