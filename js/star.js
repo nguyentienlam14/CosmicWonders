@@ -18,13 +18,11 @@ document.addEventListener("DOMContentLoaded", function () {
     function renderPagination(currentPage) {
       paginationElement.innerHTML = "";
       
-      // Previous button
       const prevPage = document.createElement("li");
       prevPage.className = "page-item" + (currentPage === 1 ? " disabled" : "");
       prevPage.innerHTML = `<a class="page-link" href="#" aria-label="Previous" data-page="${currentPage - 1}">&laquo;</a>`;
       paginationElement.appendChild(prevPage);
   
-      // Page numbers
       for (let i = 1; i <= totalPages; i++) {
         const pageItem = document.createElement("li");
         pageItem.className = "page-item" + (i === currentPage ? " active" : "");
@@ -32,7 +30,6 @@ document.addEventListener("DOMContentLoaded", function () {
         paginationElement.appendChild(pageItem);
       }
   
-      // Next button
       const nextPage = document.createElement("li");
       nextPage.className = "page-item" + (currentPage === totalPages ? " disabled" : "");
       nextPage.innerHTML = `<a class="page-link" href="#" aria-label="Next" data-page="${currentPage + 1}">&raquo;</a>`;
@@ -47,5 +44,5 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     });
   
-    showPage(1); // Show the first page on load
+    showPage(1); 
   });
