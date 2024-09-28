@@ -679,25 +679,7 @@
     integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
     crossorigin="anonymous"></script>
   <script src="./js/star.js"></script>
-
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      const toggleBtn = document.getElementById('toggleBtn');
-      const bbBody = document.getElementById('bbBody');
-
-      toggleBtn.addEventListener('click', function () {
-        // Toggle the 'd-none' class to show/hide content
-        bbBody.classList.toggle('d-none');
-
-        // Change button text and icon based on visibility
-        if (bbBody.classList.contains('d-none')) {
-          toggleBtn.innerHTML = 'Read More <i class="fas fa-chevron-down"></i>'; // Show Read More
-        } else {
-          toggleBtn.innerHTML = '<i class="fas fa-times"></i>'; // Show X
-        }
-      });
-    });
-  </script>
+  <script src="./js/index.js"></script>
 </body>
 
 </html>

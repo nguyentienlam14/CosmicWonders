@@ -98,7 +98,7 @@ video{
   color: #000!important;
 }
 .imgNote{
-  background-color: var(--transparent-color);
+  /* background-color: var(--transparent-color); */
   padding: 2px 12px;
   border-radius: 8px;
   margin-top: 8px;
