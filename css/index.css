@@ -760,4 +760,21 @@ padding: 12px;
   z-index: 1040; /* Đặt chỉ số z để lớp overlay nằm dưới modal */
   display: none; /* Ẩn lớp overlay mặc định */
 }
+.modal{
+}
+.modal-dialog{
+  padding: 50px 150px;
+}
+.modal-body h6{
+  color: #000;
+}
+.modal-body p{
+  color: #000;
+
+}
+.modal-body img{
+
+  color: #000;
+}
+
 /*---------------------------------------------- finish css astronaut------------------------------------------------- */
