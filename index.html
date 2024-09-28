@@ -186,13 +186,13 @@
 
       <!-- start star and planet -->
       <div
-        class="container title-summary rounded"
-        style="background-color: aliceblue; max-width: 90%"
+        class="container title-summary rounded min-vh-100"
+        style="background-color: aliceblue; max-width: 100%"
       >
         <div class="row">
           <h1
             class="mt-5 mb-5 text-center"
-            style="color: black; font-weight: 700"
+            style="color: black; font-weight: 700; text-decoration: underline;"
           >
             Stars Stories
           </h1>
@@ -223,12 +223,8 @@
                 <input
                   type="text"
                   class="form-control mb-3"
-                  placeholder="STARS"
-                />
-                <input
-                  type="text"
-                  class="form-control mb-3"
-                  placeholder="Search by keyword"
+                  placeholder="Search"
+                  id="search-input"
                 />
                 <ul class="list-unstyled collapse" id="navbarSupportedStar">
                   <li class="mb-2">
@@ -337,6 +333,7 @@
           </div>
           <div class="col-md-9">
             <div class="row">
+              <p id="no-result-message" style="display: none; color: red;">Dữ liệu bạn đang tìm kiếm hiện đang cập nhật</p>
               <!-- Article 1 -->
               <div class="col-md-4 mb-3">
                 <div class="card card-content">
@@ -347,12 +344,12 @@
                   />
                   <div class="card-body">
                     <h5 class="card-title">
-                      NASA's Webb Peers into the Extreme Outer Galaxy
+                      Sao hỏa
                     </h5>
                     <p class="card-text">
                       Astronomers have directed NASA's James Webb Space
                       Telescope to examine the outskirts of our Milky Way
-                      galaxy...
+                      galaxy...test cái xem nó để 3 ròng được không thêm tí nữa đi
                     </p>
                     <a
                       href="#"
@@ -378,7 +375,7 @@
                   />
                   <div class="card-body">
                     <h5 class="card-title">
-                      NASA's Webb Peers into the Extreme Outer Galaxy
+                      Sao thổ
                     </h5>
                     <p class="card-text">
                       Astronomers have directed NASA's James Webb Space
@@ -409,7 +406,7 @@
                   />
                   <div class="card-body">
                     <h5 class="card-title">
-                      NASA's Webb Peers into the Extreme Outer Galaxy
+                      Sao Kim
                     </h5>
                     <p class="card-text">
                       Astronomers have directed NASA's James Webb Space
@@ -440,7 +437,7 @@
                   />
                   <div class="card-body">
                     <h5 class="card-title">
-                      NASA's Webb Peers into the Extreme Outer Galaxy
+                      Trái đất
                     </h5>
                     <p class="card-text">
                       Astronomers have directed NASA's James Webb Space
@@ -471,7 +468,7 @@
                   />
                   <div class="card-body">
                     <h5 class="card-title">
-                      NASA's Webb Peers into the Extreme Outer Galaxy
+                      Mặt trăng
                     </h5>
                     <p class="card-text">
                       Astronomers have directed NASA's James Webb Space
@@ -502,7 +499,7 @@
                   />
                   <div class="card-body">
                     <h5 class="card-title">
-                      NASA's Webb Peers into the Extreme Outer Galaxy
+                      Mặt Người
                     </h5>
                     <p class="card-text">
                       Astronomers have directed NASA's James Webb Space

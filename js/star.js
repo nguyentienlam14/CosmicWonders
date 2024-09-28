@@ -46,3 +46,46 @@ document.addEventListener("DOMContentLoaded", function () {
   
     showPage(1); 
   });
+
+
+  document.getElementById('search-input').addEventListener('input', function () {
+    const keyword = this.value.toLowerCase();
+    const cards = document.querySelectorAll('.card-content');
+    let hasMatch = false;
+
+    cards.forEach(function (card) {
+        const titleElement = card.querySelector('.card-title');
+        const textElement = card.querySelector('.card-text');
+        const originalTitle = titleElement.getAttribute('data-original-title') || titleElement.textContent;
+        const originalText = textElement.getAttribute('data-original-text') || textElement.textContent;
+        
+        titleElement.setAttribute('data-original-title', originalTitle);
+        textElement.setAttribute('data-original-text', originalText);
+
+        const title = originalTitle.toLowerCase();
+        const text = originalText.toLowerCase();
+
+        if (keyword && (title.includes(keyword) || text.includes(keyword))) {
+            card.parentElement.style.display = '';
+            hasMatch = true;
+
+            const regex = new RegExp(`(${keyword})`, 'gi');
+            titleElement.innerHTML = originalTitle.replace(regex, `<mark>$1</mark>`);
+            textElement.innerHTML = originalText.replace(regex, `<mark>$1</mark>`);
+        } else if (!keyword) {
+            card.parentElement.style.display = ''; 
+            titleElement.innerHTML = originalTitle;
+            textElement.innerHTML = originalText; 
+            hasMatch = true;
+        } else {
+            card.parentElement.style.display = 'none'; 
+        }
+    });
+
+    if (!hasMatch && keyword) {
+        document.getElementById('no-result-message').style.display = 'block';
+    } else {
+        document.getElementById('no-result-message').style.display = 'none';
+    }
+});
+
