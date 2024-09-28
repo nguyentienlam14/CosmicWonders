@@ -59,6 +59,15 @@
 }
 @keyframes rotate2{
     0% {
+        transform:translate(-50%, -50%) rotate(0deg)  ;
+    }
+    
+    100% {
+        transform:translate(-50%, -50%) rotate(360deg) ;
+    }
+}
+@keyframes rotate3{
+    0% {
         transform:rotate(0deg)  ;
     }
     
@@ -84,10 +93,10 @@
 }
 @keyframes moveInCircle {
     0% {
-        transform:  rotate(180deg) translateX(100px) rotate(120deg);
+        transform: rotate(180deg) translateX(100px) rotate(120deg);
     }
     100% {
-        transform:  rotate(540deg) translateX(100px) rotate(130deg);
+        transform: rotate(540deg) translateX(100px) rotate(130deg);
     }
 }
 @keyframes wave {

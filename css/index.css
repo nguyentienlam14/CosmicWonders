@@ -104,6 +104,14 @@ video{
 .min{
   min-width: 100%;
 }
+.img-5x3{
+  width: 500px;
+  height: 350px;
+}
+.img-5{
+  width: 500px;
+  height: 250px;
+}
 /* STARTMAINCSS */
 /* ****** */
 /* navbar */
@@ -275,7 +283,7 @@ video{
   display: block;
   outline: 1px solid #ffffff;
   filter: brightness(0.7);
-  animation: rotate2 20s linear infinite;
+  animation: rotate3 20s linear infinite;
 
 }
 
@@ -657,29 +665,31 @@ video{
 #astronaut{
   background-color: var(--transparent-color);
   box-shadow: 0 0 15px rgb(255, 255, 255);
+  width: 100%;
 }
 .astronaut-header-1{
   background: url('../assets/img/body/astronaut.webp') no-repeat center center / cover;
-  height: 500px;
+  height: 300px;
+  width: 100%;
   border-bottom:1px solid #ffffff ;
 }
 .astronaut-header-2{
   background: url('../assets/img/body/why.jpg') no-repeat center center / cover;
-  height: 500px;
+  height: 300px;
 }
 .astronaut-header-3{
   background: url('../assets/img/body/spaceship.webp') no-repeat center center / cover;
-  height: 500px;
+  height: 300px;
 }
 .astronaut-header-4{
   background: url('../assets/img/body/staion-bg.webp') no-repeat center center / cover;
-  height: 500px;
+  height: 300px;
 }
 .astronaut-header-4 span,
 .astronaut-header-3 span,
 .astronaut-header-2 span{
   display: flex;
-  font-size: 20px;
+  font-size: 16px;
   font-weight: 100;
   padding-left: 60px;
   filter: brightness(2);
@@ -689,7 +699,7 @@ video{
 .astronaut-header-3 h2,
 .astronaut-header-2 h2,
 .astronaut-header-1 h2{
-  font-size: 60px;
+  font-size: 40px;
   font-weight: 700;
   padding-left: 60px;
   filter: brightness(2);
@@ -700,7 +710,7 @@ video{
   align-items: center;
 }
 .destination h2{
-  font-size: 40px;
+  font-size: 30px;
 }
 .readmore{
   position: absolute;
@@ -739,5 +749,15 @@ video{
 .category2 button,
 .category button{
 padding: 12px;
+}
+.custom-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5); /* Màu sắc và độ trong suốt */
+  z-index: 1040; /* Đặt chỉ số z để lớp overlay nằm dưới modal */
+  display: none; /* Ẩn lớp overlay mặc định */
 }
 /*---------------------------------------------- finish css astronaut------------------------------------------------- */
