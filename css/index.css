@@ -627,3 +627,49 @@ video{
 }
 
 /*---------------------------------------------- finish css star and planet------------------------------------------------- */
+/* footer */
+footer {
+  background-size: cover;
+  padding: 20px!important;
+}
+
+footer p { 
+  margin-left: 10px;
+}
+
+footer h4 {
+  margin-left: 10px;
+}
+
+footer h5, footer h6 {
+  font-family: "Poppins", sans-serif;
+  font-size: 17px;
+  margin-left: 5px;
+  /* text-align: center; */
+}
+
+footer a {
+  text-decoration: none;
+  /* text-align: center; */
+  margin-left: 5px;
+  margin-right: 5px;
+  color: #ffffff;
+}
+
+footer span {
+  font-size: 30px;
+  font-family: "Poppins", sans-serif;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+footer hr {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+footer ul {
+  padding-left: 0;
+}
