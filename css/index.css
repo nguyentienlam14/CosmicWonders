@@ -513,6 +513,166 @@ video{
 /* font-family: "DM Mono", monospace; */
 /* maincontent-end */   
 
+/*------------------------------------------------------- Event ------------------------------------------------------------*/
+#bigbang {
+  padding: 0 50px;
+  margin-top: 50px;
+}
+
+.bb_content {
+  background-color: var(--transparent-color);
+  box-shadow: 0 0 25px rgb(255, 255, 255);
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+
+.bb_header {
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  width: 100%;
+  padding: 50px 10px;
+  background: url('/assets/img/body/bb-bg.webp') center center/ cover no-repeat;
+  position: relative;
+}
+
+.bb_header_bl {
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  width: 100%;
+  padding: 50px 10px;
+  background: url('/assets/img/body/hoden.webp') center center/ cover no-repeat;
+  position: relative;
+}
+
+.bb_content h2 {
+  font-size: 54px;
+  text-align: left;
+  padding: 12px;
+}
+
+.bb_menu_list {
+  border-left: 1px solid #ffffff;
+  padding-left: 20px;
+  position: sticky;
+  top: 50px;
+  margin-top: 25px;  
+}
+
+.bb_menu_list>:first-child {
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.bb_menu_list li a {
+  position: relative;
+  color: white !important;;
+  text-decoration: none;
+}
+
+.bb_menu_list li a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 1px;
+  background-color: #ffffff;
+  transition: width 0.3s ease;
+}
+
+.bb_menu_list li a:hover::after {
+  width: 100%;
+}
+
+.text1 {
+  margin-left: 20px;
+  margin-bottom: 20px;
+}
+
+.bb_body h3 {
+  padding: 24px 0;
+}
+
+.readMoreBtn {
+  font-size: 20px;
+  /* Smaller font size */
+  position: absolute;
+  bottom: 25px;
+  right: 25px;
+  color: #ffffff;
+  /* Text color */
+
+}
+
+.readMoreBtn i {
+  margin-left: 5px;
+  /* Add space between text and icon */
+  transition: transform 0.3s ease;
+}
+
+/* Hover effect for arrow */
+.readMoreBtn:hover i {
+  transform: translateY(5px);
+  /* Move the arrow down by 5px on hover */
+}
+
+/* font-family: "DM Mono", monospace; */
+/* maincontent-end */
+
+
+
+@media (min-width: 300px) and (max-width: 399px) {
+  #bigbang {
+    padding: 0;
+    font-size: 15px;
+  }
+
+  .bb_content h2{
+    font-size: 40px;
+  }
+
+  .text1 {
+    width: 210px;
+    margin-left: 15px;
+  }
+}
+
+@media (min-width: 400px){
+  #bigbang {
+    padding: 0;
+
+  }
+
+  .text1 {
+    width: 300px;
+  }
+}
+
+@media (min-width: 520px) {
+  #bigbang {
+    padding: 0;
+  }
+
+  .text1 {
+    width: 400px;
+  }
+}
+
+
+@media (min-width: 700px) {
+  .text1 {
+    width: 450px;
+  }
+}
+
+/*--------------------------------------------------------- End Event -------------------------------------------------------------*/
+
+
 /*------------------------------------------------------- star and planet ---------------------------------------------------------*/
 
 
