@@ -89,3 +89,47 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 });
 
+document.addEventListener('DOMContentLoaded', function() {
+  const planetCheckbox = document.getElementById('planet');
+  const starsCheckbox = document.getElementById('stars');
+  
+  const articles = document.querySelectorAll('.card-content');
+
+  function filterArticles() {
+      articles.forEach(article => {
+          const isPlanet = article.classList.contains('planet');
+          const isStar = article.classList.contains('star');
+          
+          if (planetCheckbox.checked && isPlanet) {
+              article.style.display = 'block';
+          } else if (starsCheckbox.checked && isStar) {
+              article.style.display = 'block';
+          } else {
+              article.style.display = 'none';
+          }
+      });
+  }
+
+
+  planetCheckbox.addEventListener('change', filterArticles);
+  starsCheckbox.addEventListener('change', filterArticles);
+
+  function filterArticles() {
+    const anyCheckboxChecked = planetCheckbox.checked || starsCheckbox.checked;
+
+    articles.forEach(article => {
+        const isPlanet = article.classList.contains('planet');
+        const isStar = article.classList.contains('star');
+
+        if (!anyCheckboxChecked) {
+            article.style.display = 'block';
+        } else if (planetCheckbox.checked && isPlanet) {
+            article.style.display = 'block';
+        } else if (starsCheckbox.checked && isStar) {
+            article.style.display = 'block';
+        } else {
+            article.style.display = 'none';
+        }
+    });
+}
+});

@@ -181,11 +181,11 @@
       <!-- finish general -->
 
       <!-- start Planet-Simulation -->
-      <div id="Planet-Simulation"></div>
+      <div id="event"></div>
       <!-- finish Planet-Simulation -->
 
-      <!-- start star and planet -->
-      <div
+      <!-- start Celestial -->
+      <div id="Celestial"
         class="container title-summary rounded min-vh-100"
         style="background-color: aliceblue; max-width: 100%"
       >
@@ -231,100 +231,20 @@
                     <input
                       class="form-check-input"
                       type="checkbox"
-                      id="betelgeuse"
+                      id="planet"
                     />
-                    <label class="form-check-label" for="betelgeuse"
-                      >Betelgeuse</label
+                    <label class="form-check-label" for="planet"
+                      >Planet</label
                     >
                   </li>
                   <li class="mb-2">
                     <input
                       class="form-check-input"
                       type="checkbox"
-                      id="binaryStars"
+                      id="stars"
                     />
-                    <label class="form-check-label" for="binaryStars"
-                      >Binary Stars</label
-                    >
-                  </li>
-                  <li class="mb-2">
-                    <input
-                      class="form-check-input"
-                      type="checkbox"
-                      id="brownDwarfs"
-                    />
-                    <label class="form-check-label" for="brownDwarfs"
-                      >Brown Dwarfs</label
-                    >
-                  </li>
-                  <li class="mb-2">
-                    <input
-                      class="form-check-input"
-                      type="checkbox"
-                      id="neutronStars"
-                    />
-                    <label class="form-check-label" for="neutronStars"
-                      >Neutron Stars</label
-                    >
-                  </li>
-                  <li class="mb-2">
-                    <input
-                      class="form-check-input"
-                      type="checkbox"
-                      id="protostars"
-                    />
-                    <label class="form-check-label" for="protostars"
-                      >Protostars</label
-                    >
-                  </li>
-                  <li class="mb-2">
-                    <input
-                      class="form-check-input"
-                      type="checkbox"
-                      id="redDwarfs"
-                    />
-                    <label class="form-check-label" for="redDwarfs"
-                      >Red Dwarfs</label
-                    >
-                  </li>
-                  <li class="mb-2">
-                    <input
-                      class="form-check-input"
-                      type="checkbox"
-                      id="redGiants"
-                    />
-                    <label class="form-check-label" for="redGiants"
-                      >Red Giants</label
-                    >
-                  </li>
-                  <li class="mb-2">
-                    <input
-                      class="form-check-input"
-                      type="checkbox"
-                      id="starClusters"
-                    />
-                    <label class="form-check-label" for="starClusters"
-                      >Star Clusters</label
-                    >
-                  </li>
-                  <li class="mb-2">
-                    <input
-                      class="form-check-input"
-                      type="checkbox"
-                      id="stellarEvolution"
-                    />
-                    <label class="form-check-label" for="stellarEvolution"
-                      >Stellar Evolution</label
-                    >
-                  </li>
-                  <li class="mb-2">
-                    <input
-                      class="form-check-input"
-                      type="checkbox"
-                      id="supernovae"
-                    />
-                    <label class="form-check-label" for="supernovae"
-                      >Supernovae</label
+                    <label class="form-check-label" for="stars"
+                      >Stars</label
                     >
                   </li>
                 </ul>
@@ -333,10 +253,10 @@
           </div>
           <div class="col-md-9">
             <div class="row">
-              <p id="no-result-message" style="display: none; color: red;">Dữ liệu bạn đang tìm kiếm hiện đang cập nhật</p>
+              <p id="no-result-message" style="display: none; color: red;">Dữ liệu bạn đang tìm kiếm không tìm thấy hoặc đang cập nhật</p>
               <!-- Article 1 -->
               <div class="col-md-4 mb-3">
-                <div class="card card-content">
+                <div class="card card-content star">
                   <img
                     src="./textures/jupiter.jpg"
                     class="card-img-top"
@@ -367,7 +287,7 @@
               </div>
               <!-- Article 2 -->
               <div class="col-md-4 mb-3">
-                <div class="card card-content">
+                <div class="card card-content star">
                   <img
                     src="./textures/earth.webp"
                     class="card-img-top"
@@ -398,7 +318,7 @@
               </div>
               <!-- Article 3 -->
               <div class="col-md-4 mb-3">
-                <div class="card card-content">
+                <div class="card card-content star">
                   <img
                     src="./textures/mars.png"
                     class="card-img-top"
@@ -429,7 +349,7 @@
               </div>
               <!-- Article 4 -->
               <div class="col-md-4 mb-3">
-                <div class="card card-content">
+                <div class="card card-content planet">
                   <img
                     src="./textures/neptune.jpg"
                     class="card-img-top"
@@ -460,7 +380,7 @@
               </div>
               <!-- Article 5 -->
               <div class="col-md-4 mb-3">
-                <div class="card card-content">
+                <div class="card card-content planet">
                   <img
                     src="./textures/neptune.jpg"
                     class="card-img-top"
@@ -491,7 +411,7 @@
               </div>
               <!-- Article 6 -->
               <div class="col-md-4 mb-3">
-                <div class="card card-content">
+                <div class="card card-content planet">
                   <img
                     src="./textures/neptune.jpg"
                     class="card-img-top"
@@ -657,15 +577,8 @@
         </div>
         <!-- kết thúc chi tiết bài viết -->
       </div>
-      <!-- finish star and plant -->
-
-      <!-- start Celestial -->
-      <div id="Celestial"></div>
       <!-- finish Celestial -->
 
-      <!-- start Astronaut -->
-      <div id="Cosmic-technology"></div>
-      <!-- finish Astronaut -->
     </div>
 
     <!-- start footer -->
