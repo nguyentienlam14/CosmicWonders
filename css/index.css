@@ -708,9 +708,8 @@ video{
 
 .text1 {
   margin-left: 20px;
-  width: 450px;
+  margin-bottom: 20px;
 }
-
 
 .bb_body h3 {
   padding: 24px 0;
@@ -744,15 +743,47 @@ video{
 
 
 
-@media (min-width: 360px) {
+@media (min-width: 300px) and (max-width: 399px) {
   #bigbang {
-      padding: 0px 0px;
+    padding: 0;
+    font-size: 15px;
   }
 
-  .text {
-    width: 320px;
-    margin-bottom: 20px;
+  .bb_content h2{
+    font-size: 40px;
+  }
+
+  .text1 {
+    width: 210px;
+    margin-left: 15px;
   }
 }
 
+@media (min-width: 400px){
+  #bigbang {
+    padding: 0;
+
+  }
+
+  .text1 {
+    width: 300px;
+  }
+}
+
+@media (min-width: 520px) {
+  #bigbang {
+    padding: 0;
+  }
+
+  .text1 {
+    width: 400px;
+  }
+}
+
+
+@media (min-width: 700px) {
+  .text1 {
+    width: 450px;
+  }
+}
 /* End Event */
