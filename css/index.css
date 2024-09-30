@@ -748,6 +748,11 @@ video{
   #bigbang {
       padding: 0px 0px;
   }
+
+  .text {
+    width: 320px;
+    margin-bottom: 20px;
+  }
 }
 
 /* End Event */
