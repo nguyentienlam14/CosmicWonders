@@ -647,6 +647,7 @@ video{
   width: 100%;
 }
 
+
 .bb_header {
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
@@ -656,6 +657,14 @@ video{
   position: relative;
 }
 
+.bb_header_bl {
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  width: 100%;
+  padding: 50px 10px;
+  background: url('/assets/img/body/hoden.webp') center center/ cover no-repeat;
+  position: relative;
+}
 
 .bb_content h2 {
   font-size: 54px;
@@ -697,8 +706,8 @@ video{
   width: 100%;
 }
 
-.bb_content span {
-  padding-bottom: 24px;
+.text {
+  margin-left: 20px;
 }
 
 
