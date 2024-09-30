@@ -91,27 +91,25 @@ window.onload = function() {
     shipButtons[0].style.backgroundColor = '#90702f';
     stationButtons[0].style.backgroundColor = '#90702f';
 };
-// window.onload = function() {
-//     shipButtons[3].style.backgroundColor = '#ccc';
-// };
+
 document.addEventListener('DOMContentLoaded', function() {
     const stationModal = document.getElementById('stationModal');
     const overlay = document.getElementById('overlay');
 
     stationModal.addEventListener('show.bs.modal', function (event) {
-        overlay.style.display = 'block'; // Hiện lớp overlay khi modal mở
-        const button = event.relatedTarget; // Thẻ a đã được nhấp
-        const title = button.getAttribute('data-bs-title'); // Lấy tiêu đề từ thuộc tính data-bs-title
-        const content = button.getAttribute('data-bs-content'); // Lấy nội dung từ thuộc tính data-bs-content
+        overlay.style.display = 'block';
+        const button = event.relatedTarget; 
+        const title = button.getAttribute('data-bs-title');
+        const content = button.getAttribute('data-bs-content'); 
 
         const modalTitle = stationModal.querySelector('.modal-title');
         const modalContent = stationModal.querySelector('#stationContent');
 
-        modalTitle.textContent = title; // Đặt tiêu đề cho modal
-        modalContent.textContent = content; // Đặt nội dung cho modal
+        modalTitle.textContent = title; 
+        modalContent.textContent = content;
     });
 
     stationModal.addEventListener('hidden.bs.modal', function () {
-        overlay.style.display = 'none'; // Ẩn lớp overlay khi modal đóng
+        overlay.style.display = 'none';
     });
 });
