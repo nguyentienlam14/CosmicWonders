@@ -1011,29 +1011,32 @@ footer {
 }
 
 footer p { 
-  margin-left: 20px;
-}
-
-footer span {
-  font-size: 0.9rem;
+  margin-left: 10px;
 }
 
 footer h4 {
-  margin-left: 20px;
+  margin-left: 10px;
 }
 
-footer h6 {
-  font-size: 1rem;
-  font-weight: bold;
+footer h5, footer h6 {
+  font-family: "Poppins", sans-serif;
+  font-size: 17px;
+  margin-left: 5px;
+  /* text-align: center; */
 }
 
 footer a {
   text-decoration: none;
+  /* text-align: center; */
   margin-left: 5px;
   margin-right: 5px;
   color: #ffffff;
 }
 
+footer span {
+  font-size: 30px;
+  font-family: "Poppins", sans-serif;
+}
 
 footer a:hover {
   text-decoration: underline;
@@ -1044,21 +1047,6 @@ footer hr {
   margin-bottom: 20px;
 }
 
-footer ul li{
+footer ul {
   padding-left: 0;
-  margin-bottom: 8px;
 }
-
-footer a {
-  font-size: 0.8rem;
-}
-
-@media (max-width: 768px) {
-  .logo-img-footer {
-    width: 60px;
-    height: 60px;
-  }
-}
-
-/*---------------------------------------------- -finish css footer------------------------------------------------ */
-
