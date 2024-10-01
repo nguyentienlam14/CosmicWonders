@@ -815,6 +815,7 @@ padding: 12px;
   .astronaut-header-2 h2,
   .astronaut-header-1 h2{
     padding-left: 20px;
+    background-color: transparent;
   }
   .destination h5{
     font-size: 14px!important;
