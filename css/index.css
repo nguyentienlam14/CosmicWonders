@@ -780,6 +780,9 @@ padding: 12px;
 .text-justify{
   text-align: justify!important;
 }
+/* .stations span{
+  height: 50px;
+} */
 /* xs */
 @media screen and (max-width:576px){
 .astronaut-header-4 span,
