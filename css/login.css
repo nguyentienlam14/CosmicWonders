@@ -1,0 +1,47 @@
+/* Login */
+.bb_login {
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    color: white;
+    height: 100vh;
+  }
+  
+  .login-container {
+    max-width: 400px;
+    margin-top: 10%;
+    padding: 30px;
+    border-radius: 10px;
+  }
+  
+  .login-container h1 {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  
+  .btn-custom {
+    background-color: #1a73e8;
+    border: none;
+  }
+  
+  .btn-custom:hover {
+    background-color: #0d47a1;
+  }
+  
+  @media (max-width: 576px) {
+    .login-container {
+        padding: 20px;
+    }
+  
+    body {
+        background-position: top;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .login-container {
+        max-width: 90%;
+        margin-top: 20%;
+    }
+  }
+  /* End Login */
