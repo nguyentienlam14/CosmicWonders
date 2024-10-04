@@ -70,38 +70,72 @@
                     </form> -->
                 </div>
                 <div id="events" class="hidden">
-                    <form action="" method="">
-                        <h4>TITLE</h4>
-                        <input type="text" name="section_title" id="section_title" class="form-control w-75 m-auto mb-3" required>
-
-                        <h4>SUB</h4>
-                        <input type="text" name="section_sub" id="section_sub" class="form-control w-75 m-auto mb-3" required>
-
-                        <h4>HEADER</h4>
-                        <input type="text" name="header" id="header" class="form-control w-75 m-auto mb-3" required>
-
-                        <h4>SUB TEXT</h4>
-                        <textarea name="section_content" id="section_content" class="form-control w-75 m-auto mb-3" rows="4" required></textarea>
-
-                        <h4>SECTION LINK</h4>
-                        <input type="text" name="section_link" id="section_link" class="form-control w-75 m-auto mb-3" placeholder="Nhập liên kết cho phần nội dung" required>
-
-                        <h4>IMAGE</h4>
-                        <input type="file" name="img" id="img" class="form-control w-75 m-auto mb-3" required>
-
-                        <div class="mt-5 d-flex justify-content-center">
-                            <button type="submit" class="btn btn-secondary mx-2 w-25">Đăng Bài</button>
+                    <div class="post" id="but">
+                        <h1 class="text-center">Post Management</h1>
+                        <div class="d-flex justify-content-center mt-4">
+                            <button type="submit" class="btn btn-secondary mx-2 w-25" onclick="addPost()">Add Post</button>
                         </div>
-                    </form>
+                          
+                        <div class="mt-5">
+                            <table>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>TITLE</th>
+                                    <th>HEADER</th>
+                                    <th>ACTION</th>
+                                </tr>
+                                <tr>
+                                    <td>1</td>
+                                    <td>BIGBANG</td>
+                                    <td>The Universe’s History</td>
+                                    <td>                
+                                        <button class="btn btn-danger mx-2" type="submit" onclick="editPost()">Delete</button> 
+                                        <button class="btn btn-warning mx-2" type="submit" onclick="deletePost()">Update</button>   
+                                </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div id="add">
+                        <h1 class="text-center">ADD POST</h1>
+                        <button type="submit" class="btn btn-danger back" onclick="back()">Back</button>
+                        <form action="" method="" class="mt-4">
+                            <h4>TITLE</h4>
+                            <input type="text" name="section_title" id="section_title"
+                                class="form-control w-75 m-auto mb-3" required>
+
+                            <h4>SUB</h4>
+                            <input type="text" name="section_sub" id="section_sub" class="form-control w-75 m-auto mb-3"
+                                required>
+
+                            <h4>HEADER</h4>
+                            <input type="text" name="header" id="header" class="form-control w-75 m-auto mb-3" required>
+
+                            <h4>SUB TEXT</h4>
+                            <textarea name="section_content" id="section_content" class="form-control w-75 m-auto mb-3"
+                                rows="4" required></textarea>
+
+                            <h4>IMAGE</h4>
+                            <input type="file" name="img" id="img" class="form-control w-75 m-auto mb-3" required>
+
+                            <div class="mt-5 d-flex justify-content-center">
+                                <button type="submit" class="btn btn-secondary mx-2 w-25">Post</button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
+
                 <div id="celestial" class="hidden">
                     <h2>Celestial</h2>
                     <p>Add new posts related to Celestial objects here.</p>
                 </div>
+
                 <div id="astronaut" class="hidden">
                     <h2>Astronaut</h2>
                     <p>Add new posts related to Astronauts here.</p>
                 </div>
+
                 <div id="cosmic-technology" class="hidden">
                     <h2>Cosmic Technology</h2>
                     <p>Add new posts related to Cosmic Technology here.</p>
