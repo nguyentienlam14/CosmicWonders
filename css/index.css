@@ -1001,3 +1001,55 @@ padding: 12px;
   
 }
 /*---------------------------------------------- finish css astronaut------------------------------------------------- */
+
+
+/*------------------------------------------------- footer start------------------------------------------------------------- */
+footer {
+  background-size: cover;
+  font-family: "Poppins", sans-serif;
+  width: 100%;
+}
+
+
+footer span {
+  font-size: 30px;
+  font-family: "Poppins", sans-serif;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+footer hr {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+footer ul {
+  padding-left: 0;
+}
+
+@media (max-width: 1552px) and (min-width: 992px) {
+  .introduce-footer {
+    align-items: center;
+    width: 100%;
+  }
+
+  .footer-column {
+    width: 100%;
+  }
+}
+
+@media (max-width: 408px) and (min-width: 300px) {
+  .introduce-footer {
+    align-items: center;
+  }
+
+  .introduce-footer span {
+    font-size: 18px;
+    font-weight: 800;
+    margin-left: 0 !important;
+  }
+}
+
+/*-------------------------------------------- end footer------------------------------------------------------ */
