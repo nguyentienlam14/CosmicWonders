@@ -38,12 +38,11 @@
                 <h1 class="text-center">COSMIC WONDERS</h1>
                 <hr>
                 <ul class="flex-column">
-                    <li><a class="nav-link" href="#" onclick="showContent('planet-simulation')">Planet Simulation</a>
-                    </li>
+                    <!-- <li><a class="nav-link" href="#" onclick="showContent('planet-simulation')">Planet Simulation</a></li> -->
                     <li><a class="nav-link" href="#" onclick="showContent('events')">Events</a></li>
                     <li><a class="nav-link" href="#" onclick="showContent('celestial')">Celestial</a></li>
                     <li><a class="nav-link" href="#" onclick="showContent('astronaut')">Astronaut</a></li>
-                    <li><a class="nav-link" href="#" onclick="showContent('cosmic-technology')">Cosmic Technology</a>
+                    <!-- <li><a class="nav-link" href="#" onclick="showContent('cosmic-technology')">Cosmic Technology</a> -->
                     </li>
                 </ul>
 
