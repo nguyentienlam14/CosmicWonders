@@ -73,6 +73,32 @@ th, td {
     padding: 8px;
 }
 
+tr:nth-child(odd) {
+    background-color: #f2f2f2;
+}
+
+tr:nth-child(even) {
+    background-color: #bebebe;
+}
+
+#editFormContainer {
+    position: relative;
+    display: none;
+    margin: 0 auto;
+    text-align: center;
+    background: linear-gradient(to right, #ff7e5f, #feb47b);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.btncl{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
 /* Responsive cho màn hình nhỏ */
 @media (max-width: 768px) {
     .sidebar {
