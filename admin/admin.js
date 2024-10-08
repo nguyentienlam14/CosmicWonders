@@ -46,10 +46,10 @@ function closeForm() {
 }
 
 
-function deletePost(Event_detail_title) {
+function deletePost(Event_detail_ID) {
     Swal.fire({
         title: 'Are you sure?',
-        text: "Bạn có muốn xóa bài này: " + Event_detail_title + "?",
+        text: "Bạn có muốn xóa bài này?",
         icon: 'warning',
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
@@ -64,7 +64,7 @@ function deletePost(Event_detail_title) {
             var input = document.createElement('input');
             input.type = 'hidden';
             input.name = 'delete';
-            input.value = Event_detail_title;
+            input.value = Event_detail_ID;
             form.appendChild(input);
 
             document.body.appendChild(form);
@@ -72,6 +72,7 @@ function deletePost(Event_detail_title) {
         }
     })
 }
+
 
 function editPost(Event_detail_ID, Event_detail_sub, Event_detail_title) {
     document.getElementById('editID').value = Event_detail_ID;

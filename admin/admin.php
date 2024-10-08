@@ -55,7 +55,8 @@
             <div class="edit-form-container w-50 p-2" id="editFormContainer">
                 <h2>Edit Post</h2>
                 <button type="button" class="btn btn-danger btncl" onclick="closeForm()">X</button>
-                <form id="editForm" action="admin.php" method="post" onsubmit="confirmUpdate(event)">
+                <form id="editForm" action="admin.php" method="POST" onsubmit="confirmUpdate(event)">
+
                     <div class="mb-3 mt-3">
                         <label for="editID" class="form-label">ID:</label>
                         <input type="text" id="editID" name="editID" class="form-control w-50 p-2 mx-auto">
@@ -75,12 +76,10 @@
 
 
 
+
+
             <!-- Content Area -->
             <div class="content col-12 col-md-9">
-                <div id="planet-simulation" class="hidden">
-
-                </div>
-
 
                 <?php
                 // Kết nối tới MySQL
@@ -96,84 +95,114 @@
                 }
 
                 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-                    if (isset($_POST["header"]) && isset($_POST["section_content"])) {
-                        $header = $_POST['header'];
-                        $sub_text = $_POST['section_content'];
 
-                        // Kiểm tra file ảnh có tồn tại và không có lỗi
-                        if (isset($_FILES['img']) && $_FILES['img']['error'] == 0) {
-                            $target_dir = "uploads/"; // Đường dẫn đến thư mục chứa file
-                            $target_file = $target_dir . basename($_FILES["img"]["name"]); // Tên file
+                    if (isset($_POST["form_action"])) {
+                        $form_action = $_POST["form_action"];
 
-                            // Kiểm tra và di chuyển file vào thư mục uploads
-                            if (move_uploaded_file($_FILES["img"]["tmp_name"], $target_file)) {
-                                // Chèn dữ liệu vào database bao gồm đường dẫn file ảnh
-                                $stmt = $conn->prepare("INSERT INTO event_detail (Event_detail_title, Event_detail_sub, Event_detail_img) VALUES (:header, :sub_text, :image_path)");
-                                $stmt->bindParam(':header', $header);
-                                $stmt->bindParam(':sub_text', $sub_text);
-                                $stmt->bindParam(':image_path', $target_file); // Lưu đường dẫn file
+                        // THÊM BÀI VIẾT HOẶC SỰ KIỆN MỚI
+                        if ($form_action == "insert") {
+                            // Thêm sự kiện mới hoặc lấy ID sự kiện đã chọn
+                            if (isset($_POST["event_title"]) && !empty($_POST["event_title"]) && isset($_POST["event_sub_text"])) {
+                                // Thêm sự kiện mới
+                                $event_title = $_POST['event_title'];
+                                $event_sub_text = $_POST['event_sub_text'];
+                                $event_image = null;
 
-                                if ($stmt->execute()) {
+                                // Kiểm tra file ảnh cho sự kiện mới
+                                if (isset($_FILES['event_img']) && $_FILES['event_img']['error'] == 0) {
+                                    $target_dir = "uploads/";
+                                    $event_image = $target_dir . basename($_FILES["event_img"]["name"]);
+
+                                    // Di chuyển file vào thư mục uploads
+                                    if (!move_uploaded_file($_FILES["event_img"]["tmp_name"], $event_image)) {
+                                        throw new Exception("Lỗi khi upload ảnh sự kiện.");
+                                    }
+                                }
+
+                                // Thêm sự kiện mới vào bảng Event
+                                $stmtEvent = $conn->prepare("INSERT INTO event (Event_title, Event_sub_text, Img_url) VALUES (:event_title, :event_sub_text, :img_url)");
+                                $stmtEvent->bindParam(':event_title', $event_title);
+                                $stmtEvent->bindParam(':event_sub_text', $event_sub_text);
+                                $stmtEvent->bindParam(':img_url', $event_image);
+                                $stmtEvent->execute();
+
+                                // Lấy ID của Event vừa được chèn
+                                $event_id = $conn->lastInsertId();
+                            } else {
+                                // Nếu không có sự kiện mới, lấy ID sự kiện đã chọn
+                                if (isset($_POST["event_id"]) && !empty($_POST["event_id"])) {
+                                    $event_id = $_POST["event_id"];
+                                } else {
+                                    throw new Exception("Chưa chọn sự kiện.");
+                                }
+                            }
+
+                            // Thêm bài viết chi tiết
+                            if (isset($_POST["header"]) && isset($_POST["section_content"])) {
+                                $header = $_POST['header'];
+                                $sub_text = $_POST['section_content'];
+                                $post_image = null;
+
+                                // Kiểm tra file ảnh cho bài viết chi tiết
+                                if (isset($_FILES['img']) && $_FILES['img']['error'] == 0) {
+                                    $target_dir = "uploads/";
+                                    $post_image = $target_dir . basename($_FILES["img"]["name"]);
+
+                                    // Di chuyển file vào thư mục uploads
+                                    if (!move_uploaded_file($_FILES["img"]["tmp_name"], $post_image)) {
+                                        throw new Exception("Lỗi khi upload file bài viết.");
+                                    }
+                                }
+
+                                // Chèn dữ liệu vào bảng Event_detail
+                                $stmtDetail = $conn->prepare("INSERT INTO event_detail (Event_detail_title, Event_detail_sub, Event_detail_img, Event_ID) VALUES (:header, :sub_text, :image_path, :event_id)");
+                                $stmtDetail->bindParam(':header', $header);
+                                $stmtDetail->bindParam(':sub_text', $sub_text);
+                                $stmtDetail->bindParam(':image_path', $post_image);
+                                $stmtDetail->bindParam(':event_id', $event_id);
+
+                                if ($stmtDetail->execute()) {
+
                                     echo "<script>
-                                        Swal.fire({
-                                            title: 'Post thành công!',
-                                            icon: 'success',
-                                            confirmButtonText: 'OK'
-                                        }).then((result) => {
-                                            if (result.isConfirmed) {
-                                                localStorage.setItem('showEvents', true);
-                                                window.location.href = 'admin.php';
-                                            }
-                                        });
-                                        </script>";
+                        Swal.fire({
+                            title: 'Post thành công!',
+                            icon: 'success',
+                            confirmButtonText: 'OK'
+                        }).then((result) => {
+                            if (result.isConfirmed) {
+                                localStorage.setItem('showEvents', true);
+                                window.location.href = 'admin.php';
+                            }
+                        });
+                        </script>";
+                                } else {
+                                    throw new Exception("Lỗi khi chèn vào bảng event_detail.");
                                 }
                             } else {
-                                echo "Lỗi khi upload file.";
-                            }
-                        } else {
-                            // Nếu không có file ảnh, chèn dữ liệu mà không có ảnh
-                            $stmt = $conn->prepare("INSERT INTO event_detail (Event_detail_title, Event_detail_sub) VALUES (:header, :sub_text)");
-                            $stmt->bindParam(':header', $header);
-                            $stmt->bindParam(':sub_text', $sub_text);
-
-                            if ($stmt->execute()) {
-                                echo "<script>
-                                    Swal.fire({
-                                        title: 'Post thành công!',
-                                        icon: 'success',
-                                        confirmButtonText: 'OK'
-                                    }).then((result) => {
-                                        if (result.isConfirmed) {
-                                            localStorage.setItem('showEvents', true);
-                                            window.location.href = 'admin.php';
-                                        }
-                                    });
-                                    </script>";
-                            } else {
-                                echo "Lỗi khi thêm dữ liệu.";
+                                throw new Exception("Chưa nhập đầy đủ tiêu đề và nội dung.");
                             }
                         }
                     } else if (isset($_POST["delete"])) {
 
                         $id = $_POST["delete"];
 
-                        $stmt = $conn->prepare("DELETE FROM event_detail WHERE Event_detail_title = :del");
+                        $stmt = $conn->prepare("DELETE FROM event_detail WHERE Event_detail_ID = :del");
                         $stmt->bindParam(':del', $id);
                         if ($stmt->execute()) {
                             echo "
-                                <script>
-                                    Swal.fire({
-                                    title: 'Xóa thành công!',
-                                    icon: 'success',
-                                    confirmButtonText: 'OK'
-                                }).then((result) => {
-                                    if (result.isConfirmed) {
-                                        localStorage.setItem('showEvents', true);
-                                        window.location.href = 'admin.php';
-                                    }
-                                });
-                                </script>
-                            ";
+                            <script>
+                                Swal.fire({
+                                title: 'Xóa thành công!',
+                                icon: 'success',
+                                confirmButtonText: 'OK'
+                            }).then((result) => {
+                                if (result.isConfirmed) {
+                                    localStorage.setItem('showEvents', true);
+                                    window.location.href = 'admin.php';
+                                }
+                            });
+                            </script>
+                        ";
                         };
                     } else if (isset($_POST["editID"]) && !empty($_POST["editID"])) {
 
@@ -188,19 +217,19 @@
                         $stmt->bindParam(':id', $editID);
                         if ($stmt->execute()) {
                             echo "
-                            <script>
-                                    Swal.fire({
-                                        title: 'Sửa thành công!',
-                                        icon: 'success',
-                                        confirmButtonText: 'OK'
-                                    }).then((result) => {
-                                        if (result.isConfirmed) {
-                                        localStorage.setItem('showEvents', true);
-                                        window.location.href = 'admin.php';
-                                    }
-                                });
-                                </script>
-                            ";
+                        <script>
+                                Swal.fire({
+                                    title: 'Sửa thành công!',
+                                    icon: 'success',
+                                    confirmButtonText: 'OK'
+                                }).then((result) => {
+                                    if (result.isConfirmed) {
+                                    localStorage.setItem('showEvents', true);
+                                    window.location.href = 'admin.php';
+                                }
+                            });
+                            </script>
+                        ";
                         };
                     }
                 }
@@ -217,51 +246,80 @@
                             <table>
                                 <tr>
                                     <th>ID</th>
+                                    <th>EVENT</th>
                                     <th>TITLE</th>
-                                    <th>IMAGE</th>
                                     <th>ACTION</th>
                                 </tr>
 
                                 <?php
                                 // Truy vấn dữ liệu từ bảng Event hoặc Post
-                                $result = $conn->prepare("SELECT Event_detail_ID, Event_detail_title, Event_detail_sub, Event_detail_img FROM event_detail");
+                                $result = $conn->prepare("SELECT Event_detail_ID, Event_detail_title, Event_detail_sub, Event_title FROM event JOIN event_detail ON event.Event_ID = event_detail.Event_ID");
                                 $result->execute();
 
                                 // Hiển thị dữ liệu ra bảng
                                 while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
                                     echo "<tr>";
                                     echo "<td>" . htmlspecialchars($row["Event_detail_ID"]) . "</td>";
+                                    echo "<td>" . htmlspecialchars($row["Event_title"]) . "</td>";
                                     echo "<td>" . htmlspecialchars($row["Event_detail_title"]) . "</td>";
-                                    echo "<td><img src='" . htmlspecialchars($row["Event_detail_img"]) . "' style='max-width: 100px; max-height: 100px;'></td>";
                                     echo "<td>
-                                            <button class='btn btn-danger mx-2' type='button' onclick='deletePost(\"" . addslashes(htmlspecialchars($row['Event_detail_title'])) . "\")'>Delete</button>
-                                            <button class='btn btn-warning mx-2' type='button' onclick='editPost(\"" . addslashes(htmlspecialchars($row['Event_detail_ID'])) . "\", \"" . addslashes(htmlspecialchars($row['Event_detail_sub'])) . "\", \"" . addslashes(htmlspecialchars($row['Event_detail_title'])) . "\")'>Update</button>
+                                            <button class='btn btn-danger mx-3' type='button' onclick='deletePost(\"" . addslashes(htmlspecialchars($row['Event_detail_ID'])) . "\")'>Delete</button>
+                                            <button class='btn btn-warning mx-3' type='button' onclick='editPost(\"" . addslashes(htmlspecialchars($row['Event_detail_ID'])) . "\", \"" . addslashes(htmlspecialchars($row['Event_detail_sub'])) . "\", \"" . addslashes(htmlspecialchars($row['Event_detail_title'])) . "\")'>Update</button>
                                          </td>";
                                     echo "</tr>";
                                 }
                                 ?>
 
+
                             </table>
                         </div>
                     </div>
 
+                    <?php
+                    // Kết nối đến cơ sở dữ liệu và lấy danh sách các sự kiện
+                    $stmt = $conn->prepare("SELECT Event_ID, Event_title FROM event");
+                    $stmt->execute();
+                    $events = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                    ?>
+
                     <div id="add">
-                        <h1 class="text-center">ADD POST</h1>
-                        <button type="submit" class="btn btn-danger back" onclick="back()">Back</button>
+                        <h1 class="text-center">ADD EVENT AND POST</h1>
+                        <button type="button" class="btn btn-danger back" onclick="back()">Back</button>
+
+                        <!-- Form insert -->
                         <form action="admin.php" method="POST" enctype="multipart/form-data" class="mt-4">
-                            <!-- <h4>TITLE</h4>
-                        <input type="text" name="section_title" id="section_title" class="form-control w-75 m-auto mb-3" required>
 
-                        <h4>SUB</h4>
-                        <input type="text" name="section_sub" id="section_sub" class="form-control w-75 m-auto mb-3" required> -->
+                            <input type="hidden" name="form_action" value="insert">
 
+                            <!-- Thêm sự kiện mới (nếu cần) -->
+                            <h4>THÊM SỰ KIỆN MỚI</h4>
+                            <input type="text" name="event_title" id="event_title" class="form-control w-75 m-auto mb-3" placeholder="Event Title">
+
+                            <textarea name="event_sub_text" id="event_sub_text" class="form-control w-75 m-auto mb-3" placeholder="Event Sub Text" rows="2"></textarea>
+
+                            <!-- Trường ảnh cho sự kiện mới -->
+                            <h4>ẢNH CHO SỰ KIỆN MỚI</h4>
+                            <input type="file" name="event_img" id="event_img" class="form-control w-75 m-auto mb-3">
+
+                            <!-- Dropdown để chọn sự kiện có sẵn -->
+                            <h4>CHỌN SỰ KIỆN CÓ SẴN ĐỂ THÊM BÀI VIẾT</h4>
+                            <select name="event_id" class="form-control w-75 m-auto mb-3">
+                                <option value="">Chọn sự kiện</option>
+                                <?php foreach ($events as $event): ?>
+                                    <option value="<?= $event['Event_ID'] ?>"><?= htmlspecialchars($event['Event_title']) ?></option>
+                                <?php endforeach; ?>
+                            </select>
+
+                            <!-- Title Detail cho Event Detail -->
                             <h4>TITLE DETAIL</h4>
-                            <input type="text" name="header" id="header" class="form-control w-75 m-auto mb-3" required>
+                            <input type="text" name="header" id="header" class="form-control w-75 m-auto mb-3">
 
+                            <!-- Sub Text cho Event Detail -->
                             <h4>SUB TEXT</h4>
-                            <textarea name="section_content" id="section_content" class="form-control w-75 m-auto mb-3" rows="4" required></textarea>
+                            <textarea name="section_content" id="section_content" class="form-control w-75 m-auto mb-3" rows="4"></textarea>
 
-                            <h4>IMAGE</h4>
+                            <!-- Image cho Event Detail -->
+                            <h4>IMAGE FOR POST</h4>
                             <input type="file" name="img" id="img" class="form-control w-75 m-auto mb-3">
 
                             <div class="mt-5 d-flex justify-content-center">
@@ -269,6 +327,7 @@
                             </div>
                         </form>
                     </div>
+
                 </div>
 
 
@@ -282,10 +341,6 @@
                     <p>Add new posts related to Astronauts here.</p>
                 </div>
 
-                <div id="cosmic-technology" class="hidden">
-                    <h2>Cosmic Technology</h2>
-                    <p>Add new posts related to Cosmic Technology here.</p>
-                </div>
             </div>
         </div>
 
