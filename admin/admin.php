@@ -224,22 +224,23 @@
 
                                 <?php
                                 // Truy vấn dữ liệu từ bảng Event hoặc Post
-                                $result = $conn->prepare("SELECT Event_detail_ID, Event_detail_title, Event_detail_img FROM event_detail");
+                                $result = $conn->prepare("SELECT Event_detail_ID, Event_detail_title, Event_detail_sub, Event_detail_img FROM event_detail");
                                 $result->execute();
 
                                 // Hiển thị dữ liệu ra bảng
                                 while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
                                     echo "<tr>";
-                                    echo "<td>" . $row["Event_detail_ID"] . "</td>";
-                                    echo "<td>" . $row["Event_detail_title"] . "</td>";
-                                    echo "<td><img src='" . $row["Event_detail_img"] . "' style='max-width: 100px; max-height: 100px;'></td>";
+                                    echo "<td>" . htmlspecialchars($row["Event_detail_ID"]) . "</td>";
+                                    echo "<td>" . htmlspecialchars($row["Event_detail_title"]) . "</td>";
+                                    echo "<td><img src='" . htmlspecialchars($row["Event_detail_img"]) . "' style='max-width: 100px; max-height: 100px;'></td>";
                                     echo "<td>
-                                            <button class='btn btn-danger mx-2' type='button' onclick='deletePost(\"{$row['Event_detail_title']}\")'>Delete</button>
-                                            <button class='btn btn-warning mx-2' type='button' onclick='editPost(\"{$row['Event_detail_ID']}\")'>Update</button>
+                                            <button class='btn btn-danger mx-2' type='button' onclick='deletePost(\"" . addslashes(htmlspecialchars($row['Event_detail_title'])) . "\")'>Delete</button>
+                                            <button class='btn btn-warning mx-2' type='button' onclick='editPost(\"" . addslashes(htmlspecialchars($row['Event_detail_ID'])) . "\", \"" . addslashes(htmlspecialchars($row['Event_detail_sub'])) . "\", \"" . addslashes(htmlspecialchars($row['Event_detail_title'])) . "\")'>Update</button>
                                          </td>";
                                     echo "</tr>";
                                 }
                                 ?>
+
                             </table>
                         </div>
                     </div>

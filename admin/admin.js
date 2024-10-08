@@ -41,8 +41,10 @@ function back() {
 }
 
 function closeForm() {
-    document.getElementById('editFormContainer').style.display = 'none';
+    const editFormContainer = document.getElementById('editFormContainer');
+    editFormContainer.classList.remove('show');
 }
+
 
 function deletePost(Event_detail_title) {
     Swal.fire({
@@ -71,10 +73,14 @@ function deletePost(Event_detail_title) {
     })
 }
 
-function editPost(Event_detail_ID) {
+function editPost(Event_detail_ID, Event_detail_sub, Event_detail_title) {
     document.getElementById('editID').value = Event_detail_ID;
-    document.getElementById('editFormContainer').style.display = 'block';
+    document.getElementById('editTitle').value = Event_detail_title;
+    document.getElementById('editSub').value = Event_detail_sub;
+    document.getElementById('editFormContainer').classList.add('show');
 }
+
+
 
 function confirmUpdate(event) {
 
