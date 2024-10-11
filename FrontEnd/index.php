@@ -132,7 +132,7 @@
           <a href="#cosmotechnology"><i class="bi bi-arrow-down-circle-fill"></i></a>
         </div>
       </div>
-      
+
     </div>
     <!-- finish general -->
 
@@ -528,399 +528,165 @@
     <!-- finish Event -->
 
     <!-- start Celestial -->
+    <?php
+      include '../BackEnd/Celestial/fetch_celestial_data.php';
+    ?>
     <div id="celestial"
-    class="container title-summary rounded min-vh-100"
-    style="background-color: rgba(224, 217, 217, 0.3); max-width: 100%"
-  >
-    <div class="row">
-      <h1
-        class="mt-5 mb-5 text-center"
-        style="color: white; font-weight: 700;"
-      >
-        Stars Stories
-      </h1>
-      <div class="col-md-3 mb-2 sticky-filter" id="filter-section">
-        <div class="card m-auto">
-          <div
-            class="card-header d-flex justify-content-between align-items-center"
-          >
-            <span style="font-weight: 500; font-size: 15px"
-              >Which star and planet do you want to explore?</span
-            >
-            <button
-              class="navbar-toggler"
-              type="button"
-              data-bs-toggle="collapse"
-              data-bs-target="#navbarSupportedStar"
-              aria-controls="navbarSupportedStar"
-              aria-expanded="false"
-              aria-label="Toggle navigation"
-            >
-              <i
-                class="bi bi-filter-square-fill"
-                style="font-size: 20px"
-              ></i>
-            </button>
-          </div>
-          <div class="card-body">
-            <input
-              type="text"
-              class="form-control mb-3"
-              placeholder="Search"
-              id="search-input"
-            />
-            <ul class="list-unstyled collapse" id="navbarSupportedStar">
-              <li class="mb-2">
-                <input
-                  class="form-check-input"
-                  type="checkbox"
-                  id="planet"
-                />
-                <label class="form-check-label" for="planet"
-                  >Planet</label
-                >
-              </li>
-              <li class="mb-2">
-                <input
-                  class="form-check-input"
-                  type="checkbox"
-                  id="stars"
-                />
-                <label class="form-check-label" for="stars"
-                  >Stars</label
-                >
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-9">
-        <div class="row">
-          <p id="no-result-message" style="display: none; color: red;">Dữ liệu bạn đang tìm kiếm không tìm thấy hoặc đang cập nhật</p>
-          <!-- Article 1 -->
-          <div class="col-md-4 mb-3">
-            <div class="card card-content star">
-              <img
-                src="./textures/jupiter.jpg"
-                class="card-img-top"
-                alt="..."
-              />
-              <div class="card-body">
-                <h5 class="card-title">
-                  Sao hỏa
-                </h5>
-                <p class="card-text">
-                  Astronomers have directed NASA's James Webb Space
-                  Telescope to examine the outskirts of our Milky Way
-                  galaxy...test cái xem nó để 3 ròng được không thêm tí nữa đi
-                </p>
-                <a
-                  href="#"
-                  class="btn btn-primary btn-content-readmore"
-                  data-bs-toggle="modal"
-                  data-bs-target="#titleDetailModal"
-                  >Read More</a
-                >
-                <hr class="my-2" />
-                <p class="card-text text-end">
-                  <small class="text-muted">Article - 1 week ago</small>
-                </p>
-              </div>
+      class="container title-summary rounded min-vh-100"
+      style="background-color: rgba(224, 217, 217, 0.3); max-width: 100%">
+      <div class="row">
+        <h1
+          class="mt-5 mb-5 text-center"
+          style="color: white; font-weight: 700;">
+          Stars Stories
+        </h1>
+        <div class="col-md-3 mb-2 sticky-filter" id="filter-section">
+          <div class="card m-auto">
+            <div
+              class="card-header d-flex justify-content-between align-items-center">
+              <span style="font-weight: 500; font-size: 15px">Which star and planet do you want to explore?</span>
+              <button
+                class="navbar-toggler"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedStar"
+                aria-controls="navbarSupportedStar"
+                aria-expanded="false"
+                aria-label="Toggle navigation">
+                <i
+                  class="bi bi-filter-square-fill"
+                  style="font-size: 20px"></i>
+              </button>
             </div>
-          </div>
-          <!-- Article 2 -->
-          <div class="col-md-4 mb-3">
-            <div class="card card-content star">
-              <img
-                src="./textures/earth.webp"
-                class="card-img-top"
-                alt="..."
-              />
-              <div class="card-body">
-                <h5 class="card-title">
-                  Sao thổ
-                </h5>
-                <p class="card-text">
-                  Astronomers have directed NASA's James Webb Space
-                  Telescope to examine the outskirts of our Milky Way
-                  galaxy...
-                </p>
-                <a
-                  href="#"
-                  class="btn btn-primary btn-content-readmore"
-                  data-bs-toggle="modal"
-                  data-bs-target="#titleDetailModal"
-                  >Read More</a
-                >
-                <hr class="my-2" />
-                <p class="card-text text-end">
-                  <small class="text-muted">Article - 1 week ago</small>
-                </p>
-              </div>
-            </div>
-          </div>
-          <!-- Article 3 -->
-          <div class="col-md-4 mb-3">
-            <div class="card card-content star">
-              <img
-                src="./textures/mars.png"
-                class="card-img-top"
-                alt="..."
-              />
-              <div class="card-body">
-                <h5 class="card-title">
-                  Sao Kim
-                </h5>
-                <p class="card-text">
-                  Astronomers have directed NASA's James Webb Space
-                  Telescope to examine the outskirts of our Milky Way
-                  galaxy...
-                </p>
-                <a
-                  href="#"
-                  class="btn btn-primary btn-content-readmore"
-                  data-bs-toggle="modal"
-                  data-bs-target="#titleDetailModal"
-                  >Read More</a
-                >
-                <hr class="my-2" />
-                <p class="card-text text-end">
-                  <small class="text-muted">Article - 1 week ago</small>
-                </p>
-              </div>
-            </div>
-          </div>
-          <!-- Article 4 -->
-          <div class="col-md-4 mb-3">
-            <div class="card card-content planet">
-              <img
-                src="./textures/neptune.jpg"
-                class="card-img-top"
-                alt="..."
-              />
-              <div class="card-body">
-                <h5 class="card-title">
-                  Trái đất
-                </h5>
-                <p class="card-text">
-                  Astronomers have directed NASA's James Webb Space
-                  Telescope to examine the outskirts of our Milky Way
-                  galaxy...
-                </p>
-                <a
-                  href="#"
-                  class="btn btn-primary btn-content-readmore"
-                  data-bs-toggle="modal"
-                  data-bs-target="#titleDetailModal"
-                  >Read More</a
-                >
-                <hr class="my-2" />
-                <p class="card-text text-end">
-                  <small class="text-muted">Article - 1 week ago</small>
-                </p>
-              </div>
-            </div>
-          </div>
-          <!-- Article 5 -->
-          <div class="col-md-4 mb-3">
-            <div class="card card-content planet">
-              <img
-                src="./textures/neptune.jpg"
-                class="card-img-top"
-                alt="..."
-              />
-              <div class="card-body">
-                <h5 class="card-title">
-                  Mặt trăng
-                </h5>
-                <p class="card-text">
-                  Astronomers have directed NASA's James Webb Space
-                  Telescope to examine the outskirts of our Milky Way
-                  galaxy...
-                </p>
-                <a
-                  href="#"
-                  class="btn btn-primary btn-content-readmore"
-                  data-bs-toggle="modal"
-                  data-bs-target="#titleDetailModal"
-                  >Read More</a
-                >
-                <hr class="my-2" />
-                <p class="card-text text-end">
-                  <small class="text-muted">Article - 1 week ago</small>
-                </p>
-              </div>
-            </div>
-          </div>
-          <!-- Article 6 -->
-          <div class="col-md-4 mb-3">
-            <div class="card card-content planet">
-              <img
-                src="./textures/neptune.jpg"
-                class="card-img-top"
-                alt="..."
-              />
-              <div class="card-body">
-                <h5 class="card-title">
-                  Mặt Người
-                </h5>
-                <p class="card-text">
-                  Astronomers have directed NASA's James Webb Space
-                  Telescope to examine the outskirts of our Milky Way
-                  galaxy...
-                </p>
-                <a
-                  href="#"
-                  class="btn btn-primary btn-content-readmore"
-                  data-bs-toggle="modal"
-                  data-bs-target="#titleDetailModal"
-                  >Read More</a
-                >
-                <hr class="my-2" />
-                <p class="card-text text-end">
-                  <small class="text-muted">Article - 1 week ago</small>
-                </p>
-              </div>
+            <div class="card-body">
+              <input
+                type="text"
+                class="form-control mb-3"
+                placeholder="Search"
+                id="search-input" />
+              <ul class="list-unstyled collapse" id="navbarSupportedStar">
+                <li class="mb-2">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    id="planet" />
+                  <label class="form-check-label" for="planet">Planet</label>
+                </li>
+                <li class="mb-2">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    id="stars" />
+                  <label class="form-check-label" for="stars">Stars</label>
+                </li>
+              </ul>
             </div>
           </div>
         </div>
-        <!-- phân trang -->
-        <nav aria-label="Page navigation example" id="pagination">
-          <ul class="pagination justify-content-end"></ul>
-        </nav>
-      </div>
-    </div>
-
-    <!-- model chi tiết bài viết  -->
-    <div
-      class="modal fade"
-      id="titleDetailModal"
-      tabindex="-1"
-      aria-labelledby="titleDetailModalLabel"
-      aria-hidden="true"
-    >
-      <div class="modal-dialog modal-fullscreen">
-        <div class="modal-content title-summary-modal">
-          <div class="modal-header">
-            <h5 class="modal-title" id="titleDetailModalLabel">
-              Chi tiết bài viết
-            </h5>
-            <button
-              type="button"
-              class="btn-close"
-              data-bs-dismiss="modal"
-              aria-label="Close"
-            ></button>
-          </div>
-          <div class="modal-body">
-            <div class="container title-detail">
-              <div class="image-container">
-                <img
-                  src="./assets/img/slider/header_img(5).png"
-                  alt="Sao Thổ"
-                />
-                <div class="title-img">
-                  <div class="title-img-1">SAO THỔ</div>
-                  <div class="title-img-2">
-                    Sao Thổ là hành tinh thứ sáu tính từ Mặt trời và là hành
-                    tinh lớn thứ hai trong hệ mặt trời. Nó được bao quanh
-                    bởi những vành đai tuyệt đẹp.
+        <div class="col-md-9">
+          <div class="row">
+            <p id="no-result-message" style="display: none; color: red;">Dữ liệu bạn đang tìm kiếm không tìm thấy hoặc đang cập nhật</p>
+            <?php foreach ($results as $row): ?>
+              <div class="col-md-4 mb-3">
+                <div class="card card-content <?php echo strtolower($row['Celestial_type']); ?>">
+                  <img src='../BackEnd/uploads/<?php echo htmlspecialchars($row['Celestial_detail_img']); ?>' class="card-img-top" alt="<?php echo htmlspecialchars($row['Celestial_detail_title']); ?>">
+                  <div class="card-body">
+                    <h5 class="card-title"><?php echo htmlspecialchars($row['Celestial_detail_title']); ?></h5>
+                    <p class="card-text"><?php echo htmlspecialchars($row['Celestial_detail_sub']); ?></p>
+                    <a href="#" class="btn btn-primary btn-content-readmore"
+                      data-bs-toggle="modal"
+                      data-bs-target="#titleDetailModal"
+                      data-title="<?php echo htmlspecialchars($row['Celestial_detail_title']); ?>"
+                      data-sub-title = "<?php echo htmlspecialchars($row['Celestial_detail_sub']); ?>"
+                      data-img = "../BackEnd/uploads/<?php echo htmlspecialchars($row['Celestial_detail_img']); ?>"
+                      data-discovery="<?php echo htmlspecialchars($row['Celestial_discovery_date']); ?>"
+                      data-size="<?php echo htmlspecialchars($row['Celestial_size']); ?>"
+                      data-ozone="<?php echo htmlspecialchars($row['Celestial_ozone']); ?>"
+                      data-distance="<?php echo htmlspecialchars($row['Celestial_distance_s_e']); ?>"
+                      data-other-details="<?php echo htmlspecialchars($row['Other_details']); ?>"
+                      data-created-at="<?php echo htmlspecialchars($row['created_at']); ?>">Read More</a>
+                    <hr class="my-2" />
+                    <p class="card-text text-end">
+                      <small class="text-muted">Article - <?php echo timeAgo($row['created_at']); ?></small> <!-- Thay thế với ngày phù hợp nếu cần -->
+                    </p>
                   </div>
                 </div>
               </div>
-              <div class="row">
-                <div class="col-md-12">
-                  <h2 class="section-title">Ngày phát hiện</h2>
-                  <p class="content">
-                    Sao Thổ đã được con người biết đến từ thời cổ đại, nhờ
-                    vào việc quan sát bầu trời bằng mắt thường. Các nhà
-                    thiên văn học cổ đại như Ptolemy và những người Hy Lạp
-                    đã nhận diện và ghi lại sự tồn tại của Sao Thổ. Tuy
-                    nhiên, Sao Thổ không được "phát hiện" dưới dạng hành
-                    tinh riêng biệt mà là một thiên thể đã được quan sát và
-                    nghiên cứu từ rất lâu. Việc nghiên cứu chi tiết hơn về
-                    Sao Thổ bắt đầu từ thế kỷ 17, khi Galileo Galilei lần
-                    đầu tiên quan sát Sao Thổ bằng kính viễn vọng vào năm
-                    1610.
-                  </p>
+            <?php endforeach; ?>
+          </div>
+          <!-- phân trang -->
+          <nav aria-label="Page navigation example" id="pagination">
+            <ul class="pagination justify-content-end"></ul>
+          </nav>
+        </div>
+      </div>
+
+      <!-- model chi tiết bài viết  -->
+      <div
+        class="modal fade"
+        id="titleDetailModal"
+        tabindex="-1"
+        aria-labelledby="titleDetailModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-fullscreen">
+          <div class="modal-content title-summary-modal">
+            <div class="modal-header">
+              <h5 class="modal-title" id="titleDetailModalLabel">
+                Chi tiết bài viết
+              </h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <div class="container title-detail">
+                <div class="image-container">
+                  <img src="" alt="Hình ảnh chi tiết" id="modal-image" />
+                  <div class="title-img">
+                    <div class="title-img-1" id="modal-title"></div>
+                    <div class="title-img-2" id="modal-subtitle"></div>
+                  </div>
                 </div>
-              </div>
-              <div class="row">
-                <div class="col-md-12">
-                  <h2 class="section-title">Kích thước</h2>
-                  <p class="content">
-                    Sao Thổ là hành tinh lớn thứ hai trong Hệ Mặt Trời sau
-                    Sao Mộc, với đường kính khoảng 120,536 km. Khối lượng
-                    của Sao Thổ cũng lớn hơn Trái Đất rất nhiều, gấp khoảng
-                    95 lần. Tuy nhiên, Sao Thổ lại có mật độ rất thấp, chỉ
-                    bằng 0.687 lần mật độ nước, có nghĩa là nếu có thể đặt
-                    Sao Thổ vào một hồ nước khổng lồ, nó sẽ nổi.
-                  </p>
+                <div class="row">
+                  <div class="col-md-12">
+                    <h2 class="section-title">Discovery Date</h2>
+                    <p class="content" id="modal-discovery"></p>
+                  </div>
                 </div>
-              </div>
-              <div class="row">
-                <div class="col-md-12">
-                  <h2 class="section-title">Khí quyển</h2>
-                  <p class="content">
-                    Khí quyển của Sao Thổ chủ yếu bao gồm hydro (khoảng 96%)
-                    và heli (khoảng 3%), giống như nhiều hành tinh khí khổng
-                    lồ khác. Bên cạnh đó, nó còn chứa các hợp chất nhỏ khác
-                    như methane, amonia, và hơi nước. Khí quyển của Sao Thổ
-                    có các dải mây tương tự như Sao Mộc, tuy nhiên, chúng
-                    không rõ nét và dễ nhận thấy như Sao Mộc do lớp mây dày
-                    hơn và ít rối loạn hơn.
-                  </p>
+                <div class="row">
+                  <div class="col-md-12">
+                    <h2 class="section-title">Size</h2>
+                    <p class="content" id="modal-size"></p>
+                  </div>
                 </div>
-              </div>
-              <div class="row">
-                <div class="col-md-12">
-                  <h2 class="section-title">
-                    Khoảng cách từ Mặt Trời và Trái Đất
-                  </h2>
-                  <p class="content">
-                    Sao Thổ cách Mặt Trời khoảng 1.4 tỷ km (9.5 đơn vị thiên
-                    văn - AU), tùy thuộc vào vị trí trên quỹ đạo của nó.
-                    Khoảng cách giữa Sao Thổ và Trái Đất thay đổi tùy theo
-                    vị trí của hai hành tinh trên quỹ đạo của mình, nhưng
-                    khoảng cách trung bình là khoảng 1.2 tỷ km.
-                  </p>
+                <div class="row">
+                  <div class="col-md-12">
+                    <h2 class="section-title">Atmosphere</h2>
+                    <p class="content" id="modal-ozone"></p>
+                  </div>
                 </div>
-              </div>
-              <div class="row">
-                <div class="col-md-12">
-                  <h2 class="section-title">
-                    Các chi tiết quan trọng khác
-                  </h2>
-                  <p class="content">
-                    Vòng đai: Sao Thổ nổi tiếng với hệ thống vòng đai tuyệt
-                    đẹp, chủ yếu được tạo thành từ bằng và đãi. Những vòng
-                    đai này trải dài hàng ngàn km, nhưng chỉ dày vài chục
-                    mét.
-                  </p>
-                  <p class="content">
-                    Mặt trăng: Sao Thổ có ít nhất 83 mặt trăng được xác
-                    nhận, trong đó lớn nhất là Titan, mặt trăng lớn thứ hai
-                    trong Hệ Mặt Trời. Titan có một bầu khí quyển dày và có
-                    các chất hóa học giống với những gì có thể hình thành sự
-                    sống.
-                  </p>
-                  <p class="content">
-                    Quỹ đạo và chu kỳ quay: Một năm trên Sao Thổ (tức thời
-                    gian sao Thổ quay quanh Mặt Trời) kéo dài khoảng 29.5
-                    năm Trái Đất. Tuy nhiên, một ngày trên Sao Thổ (tức thời
-                    gian sao Thổ tự quay quanh trục của nó) chỉ dài khoảng
-                    10 giờ 33 phút.
-                  </p>
+                <div class="row">
+                  <div class="col-md-12">
+                    <h2 class="section-title">Distance from the Sun and Earth</h2>
+                    <p class="content" id="modal-distance"></p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12">
+                    <h2 class="section-title">Other Important Details</h2>
+                    <p class="content" id="modal-other-details"></p>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
+      <!-- kết thúc chi tiết bài viết -->
     </div>
-    <!-- kết thúc chi tiết bài viết -->
-    </div>
-  <!-- finish Celestial -->
+    <!-- finish Celestial -->
 
     <!-- start Astronaut -->
     <div class=" mt-5" id="astronaut">
@@ -1267,8 +1033,7 @@
             src="./assets/img/logo/weblogo.png"
             alt="Discoveries Logo"
             class="logo-img-footer img-fluid mb-3"
-            style="width: 100px; height: 100px"
-          />
+            style="width: 100px; height: 100px" />
           <span class="ms-2">Cosmic Wonders</span>
           <h4 class="ms-3">Group 2</h4>
           <p class="ms-3 w-80">
@@ -1284,24 +1049,16 @@
               <h4 class="text-light text-decoration-underline mb-3">Home</h4>
               <ul class="list-unstyled">
                 <li>
-                  <a href="#" class="text-white text-decoration-none"
-                    >Planet</a
-                  >
+                  <a href="#" class="text-white text-decoration-none">Planet</a>
                 </li>
                 <li>
-                  <a href="#" class="text-white text-decoration-none"
-                    >Constellation</a
-                  >
+                  <a href="#" class="text-white text-decoration-none">Constellation</a>
                 </li>
                 <li>
-                  <a href="#" class="text-white text-decoration-none"
-                    >Spaceship</a
-                  >
+                  <a href="#" class="text-white text-decoration-none">Spaceship</a>
                 </li>
                 <li>
-                  <a href="#" class="text-white text-decoration-none"
-                    >Telescope</a
-                  >
+                  <a href="#" class="text-white text-decoration-none">Telescope</a>
                 </li>
               </ul>
             </div>
@@ -1311,14 +1068,10 @@
               </h4>
               <ul class="list-unstyled">
                 <li>
-                  <a href="#" class="text-white text-decoration-none"
-                    >Planets</a
-                  >
+                  <a href="#" class="text-white text-decoration-none">Planets</a>
                 </li>
                 <li>
-                  <a href="#" class="text-white text-decoration-none"
-                    >Stars</a
-                  >
+                  <a href="#" class="text-white text-decoration-none">Stars</a>
                 </li>
               </ul>
             </div>
@@ -1328,14 +1081,10 @@
               </h4>
               <ul class="list-unstyled">
                 <li>
-                  <a href="#" class="text-white text-decoration-none"
-                    >Spaceship</a
-                  >
+                  <a href="#" class="text-white text-decoration-none">Spaceship</a>
                 </li>
                 <li>
-                  <a href="#" class="text-white text-decoration-none"
-                    >Telescope</a
-                  >
+                  <a href="#" class="text-white text-decoration-none">Telescope</a>
                 </li>
               </ul>
             </div>
