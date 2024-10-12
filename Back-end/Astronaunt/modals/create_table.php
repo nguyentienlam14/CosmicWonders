@@ -70,34 +70,61 @@ function createTables($db) {
         
         // Tạo bảng Astronaut
         "CREATE TABLE Astronaut (
-            Astronaut_ID INT IDENTITY(1,1) PRIMARY KEY,
-            Astronaut_title NVARCHAR(10) NOT NULL,
-            Img_url NVARCHAR(500),
+            Astronaut_ID INT PRIMARY KEY IDENTITY(1,1),
+            Astronaut_title TEXT NOT NULL,
+            Astronaut_subtitle TEXT,
+            Img_url TEXT,
             Category_ID INT,
-            isDelete CHAR(1) CHECK (isDelete IN ('Y', 'N')) NOT NULL DEFAULT 'N',
-            created_at DATETIME DEFAULT GETDATE(),
-            updated_at DATETIME DEFAULT GETDATE(),
+            isDelete CHAR(1) CHECK (isDelete IN ('Y', 'N')) NOT NULL,
+            created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+            updated_at DATETIME DEFAULT CURRENT_TIMESTAMP,
             FOREIGN KEY (Category_ID) REFERENCES Category(Category_ID)
         )",
         
-        // Tạo bảng Astronaut_detail
         "CREATE TABLE Astronaut_detail (
-            Astronaut_detail_ID INT IDENTITY(1,1) PRIMARY KEY,
-            Astronaut_detail_type INT(1) NOT NULL CHECK (Astronaut_detail_type IN ('1,2,3')),
-            Astronaut_detail_header_text NVARCHAR(10) NOT NULL,
-            Astronaut_detail_sub_text NVARCHAR(100) NOT NULL,
-            Astronaut_Large_Size NVARCHAR(MAX),
-            Astronaut_Diverse_Research NVARCHAR(MAX),
-            Astronaut_Transport_Vehicles NVARCHAR(MAX),
-            Astronaut_Living_Conditions NVARCHAR(MAX),
-            Astronaut_Energy_Systems NVARCHAR(MAX),
-            Astronaut_detail_img NVARCHAR(500),
+            Astronaut_detail_ID INT PRIMARY KEY IDENTITY(1,1),
+            Astronaut_detail_header_text TEXT NOT NULL,
+            Astronaut_detail_header_subtext TEXT NOT NULL,
+            Astronaut_detail_sub_text TEXT NOT NULL,
+            Astronaut_detail_img TEXT,
+            Astronaut_detail_img_sub_text TEXT,
             Astronaut_ID INT,
-            isDelete CHAR(1) CHECK (isDelete IN ('Y', 'N')) NOT NULL DEFAULT 'N',
-            created_at DATETIME DEFAULT GETDATE(),
-            updated_at DATETIME DEFAULT GETDATE(),
+            Astronaut_detail_type INT,
+            isDelete CHAR(1) CHECK (isDelete IN ('Y', 'N')) NOT NULL,
+            created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+            updated_at DATETIME DEFAULT CURRENT_TIMESTAMP,
             FOREIGN KEY (Astronaut_ID) REFERENCES Astronaut(Astronaut_ID)
         )",
+        
+        "CREATE TABLE Spaceships (
+            Spaceships_id INT PRIMARY KEY IDENTITY(1,1),
+            Spaceships_name TEXT NOT NULL,
+            Spaceships_title TEXT NOT NULL,
+            Spaceships_description TEXT NOT NULL,
+            Spaceships_image TEXT NOT NULL,
+            Spaceships_details TEXT NOT NULL,
+            Spaceships_caption TEXT,
+            isDelete CHAR(1) CHECK (isDelete IN ('Y', 'N')) NOT NULL,
+            created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+            updated_at DATETIME DEFAULT CURRENT_TIMESTAMP
+        )",
+        
+       " CREATE TABLE Stations (
+            Stations_id INT PRIMARY KEY IDENTITY(1,1),
+            Stations_name TEXT NOT NULL,
+            Stations_title TEXT NOT NULL,
+            Stations_description TEXT NOT NULL,
+            Stations_image TEXT NOT NULL,
+            Stations_details TEXT NOT NULL,
+            Stations_caption TEXT,
+            isDelete CHAR(1) CHECK (isDelete IN ('Y', 'N')) NOT NULL,
+            created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+            updated_at DATETIME DEFAULT CURRENT_TIMESTAMP
+        )",
+        
+       " ALTER TABLE Astronaut
+        ADD FOREIGN KEY (Category_ID) REFERENCES Category(Category_ID);",
+        
         
         // Tạo bảng Config
         "CREATE TABLE Config (
