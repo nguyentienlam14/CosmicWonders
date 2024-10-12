@@ -1,0 +1,193 @@
+.sidebar {
+    background-color: #d3d3d3;
+    padding: 20px;
+    min-height: 100vh;
+    /* position: relative; */
+}
+
+.content {
+    padding: 20px;
+}
+
+
+/* .user-info {
+    position: absolute;
+    bottom: 20px;
+    width: 90%;
+
+} */
+
+.content {
+    padding: 20px;
+}
+
+.sidebar ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.sidebar ul li {
+    margin: 10px 0;
+    text-align: center;
+    border-radius: 5px;
+    height: 50px;
+    line-height: 50px;
+    cursor: pointer;
+}
+
+.sidebar ul li a {
+    text-decoration: none;
+    font-weight: 500;
+    font-size: large;
+}
+
+.sidebar ul li:hover {
+    background-color: #b8b8b8;
+}
+
+
+
+.sidebar .dropdown-menu {
+    display: none;
+    /* Ẩn mặc định */
+    opacity: 0;
+    /* Đặt độ mờ ban đầu */
+    transition: opacity 0.2s ease;
+    /* Hiệu ứng mờ */
+    margin-top: 5px;
+    /* Khoảng cách giữa dropdown và phần trên */
+    background-color: #f8f9fa;
+    /* Màu nền cho dropdown */
+    border: 1px solid #ced4da;
+    /* Viền cho dropdown */
+    border-radius: 5px;
+    /* Bo tròn góc */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /* Đổ bóng */
+    left: 50%;
+    /* Căn giữa */
+    transform: translateX(-50%);
+    /* Để căn giữa chính xác */
+    width: 200px;
+    /* Chiều rộng của dropdown, có thể điều chỉnh */
+}
+
+.sidebar .dropdown-item {
+    color: #343a40;
+    /* Màu chữ cho item */
+    transition: background-color 0.3s;
+    /* Hiệu ứng chuyển màu khi hover */
+    text-align: center;
+    /* Căn giữa nội dung bên trong item */
+}
+
+
+.sidebar .dropdown-item {
+    color: #343a40;
+    /* Màu chữ cho item */
+    transition: background-color 0.3s;
+    /* Hiệu ứng chuyển màu khi hover */
+}
+
+.sidebar .dropdown-item:hover {
+    background-color: #e9ecef;
+    /* Màu nền khi hover */
+    color: #212529;
+    /* Màu chữ khi hover */
+}
+
+
+
+.hidden {
+    display: none;
+}
+
+.content h4 {
+    text-align: center;
+}
+
+#add,
+#add_astronaut {
+    display: none;
+    position: relative;
+}
+
+#but,
+#but_astronaut {
+    display: block;
+}
+
+.back {
+    position: absolute;
+    top: 25px;
+}
+
+table {
+    width: 100%;
+    text-align: center;
+    table-layout: fixed;
+    border-collapse: collapse;
+}
+
+th,
+td {
+    border: 1px solid #d9cfcf;
+    padding: 8px;
+}
+
+tr:nth-child(odd) {
+    background-color: #f2f2f2;
+}
+
+tr:nth-child(even) {
+    background-color: #bebebe;
+}
+
+#editFormContainer {
+    position: relative;
+    display: block;
+    text-align: center;
+    background-color: #838383;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -60px);
+    /* Bắt đầu với modal ở vị trí trên */
+    opacity: 0;
+    /* Bắt đầu với modal trong suốt */
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    /* Hiệu ứng mượt */
+}
+
+#editFormContainer.show {
+    opacity: 1;
+    /* Khi mở modal sẽ hiển thị */
+    transform: translate(-50%, -50%);
+    /* Chuyển modal xuống vị trí giữa */
+}
+
+.btncl {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+
+/* Responsive cho màn hình nhỏ */
+@media (max-width: 768px) {
+    .sidebar {
+        min-height: auto;
+    }
+
+    .content {
+        padding: 15px;
+    }
+
+    .sidebar ul li {
+        font-size: medium;
+    }
+
+    .sidebar ul li a {
+        font-size: medium;
+    }
+}
