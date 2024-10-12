@@ -28,7 +28,7 @@
 <body>
   <!-- start header -->
   <header class="header">
-    <nav class="navbar navbar-expand-lg bg-body-tertiary navbar-header ">
+    <nav class="navbar navbar-expand-xl bg-body-tertiary navbar-header ">
       <div class="container-fluid p-0">
         <div class="center col-4 justify-content-start">
           <img class="logo-img img-fluid h-auto" src="./assets/img/logo/weblogo.png" alt="" />
@@ -102,7 +102,7 @@
       <div class="col-lg-2 col-4 selection_img">
         <a href=""><img class="" src="./assets/img/body/start.jpg" alt="" /></a>
         <div class="text">
-          <a href="#event">Cosmic<br />Event</a>
+          <a href="#event">Cosmic<br>Event</a>
         </div>
         <div class="text-icon">
           <a href="#event"><i class="bi bi-arrow-down-circle-fill"></i></a>
@@ -125,7 +125,7 @@
       <div class="col-lg-2 col-4 selection_img">
         <a href=""><img class="" src="./assets/img/body/Tàu vũ trụ.png" alt="" /></a>
         <div class="text">
-          <a href="#cosmotechnology">Cosmic<br />technology</a>
+          <a href="#cosmotechnology">Cosmic<br>technology</a>
         </div>
         <div class="text-icon">
           <a href="#cosmotechnology"><i class="bi bi-arrow-down-circle-fill"></i></a>
@@ -140,14 +140,19 @@
     <!-- finish Event -->
 
     <!-- start Celestial -->
-
-
+    <div id="Celestial">
+    </div>
     <!-- finish Celestial -->
-    <!-- start Cosmic-technology & start Astronaut -->
+
+    <!-- start Astronaut -->
     <div class=" mt-5" id="astronaut">
-      <div class="astronaut-header-1 p-relative start">
+      <div class="astronaut-header p-relative start">
+        <img class="img-fuild" src="assets/img/body/astronaut.webp" alt="">
         <div class="overlay"></div>
-        <h2 class="fs-sm-5 fs-1">The Astronaut's Voyage to <br> Explore the Stars</h2>
+        <div class="astronaut-header-sub">
+          <h2 class="fs-sm-5 fs-1">The Astronaut's Voyage to <br> Explore the Stars</h2>
+          <span></span>
+        </div>
         <button class="readmore">Read more <i class="bi bi-arrow-down-circle-fill"></i></button>
       </div>
       <div class="details p-3">
@@ -171,9 +176,10 @@
         </div>
       </div>
 
-      <div class="astronaut-header-2 p-relative start">
+      <div class="astronaut-header p-relative start">
+        <img class="img-fuild" src="assets/img/body/why.jpg" alt="">
         <div class="overlay"></div>
-        <div class="col-12 col-lg-5">
+        <div class="astronaut-header-sub">
           <h2 class="fs-lg-1 fs-2">Why Go to Space?</h2>
           <span class="fs-lg-1 fs-6">Exploring the universe, like exploring Earth, stems from the human desire to gain
             knowledge, find resources, and improve life.</span>
@@ -185,7 +191,7 @@
           <div class="col-lg-6 col-12 flex-column text-start">
             <h4>Why Go to Space</h4>
             <h2 class="pt-md-3 pb-md-3 pt-1 pb-1 fs-lg-1 fs-5">Human space exploration answers fundamental questions
-              about our place in the universe and solar system history.</h2>
+              about our place in the universe and solar system history.</h2>```
             <h5 class="pt-md-3 pb-md-3 pt-1 pb-1 fs-lg-1 fs-5">Exploration of Jupiter and its moons is crucial for
               understanding our solar
               system.</h5>
@@ -201,9 +207,10 @@
         </div>
       </div>
 
-      <div id="cosmotechnology" class="astronaut-header-3 p-relative start">
+      <div id="cosmotechnology" class="astronaut-header p-relative start">
+        <img class="img-fuild" src="assets/img/body/spaceship.webp" alt="">
         <div class="overlay"></div>
-        <div class="col-lg-5 col-12">
+        <div class="astronaut-header-sub">
           <h2 class="fs-lg-1 fs-2">Spaceships and Rockets</h2>
           <span class="fs-lg-1 fs-6">Learn more about spaceships and rockets enabled by NASA.</span>
         </div>
@@ -307,9 +314,10 @@
             </div>
           </div>
           <hr>
-          <div class="astronaut-header-4  p-relative start">
+          <div class="astronaut-header p-relative start">
+            <img class="img-fuild" src="assets/img/body/staion-bg.webp" alt="">
             <div class="overlay"></div>
-            <div class="col-lg-5 col-12">
+            <div class="astronaut-header-sub">
               <h2>Orion Spacecraft</h2>
               <span>The reasons to explore the universe are as varied as those for exploring Earth: to learn, discover
                 resources, and improve life.</span>
@@ -444,7 +452,8 @@
               </div>
             </div>
           </div>
-        </div>
+          </div>
+      </div>
       </div>
       <!-- Modal -->
       <div class="custom-overlay" id="overlay"></div>
