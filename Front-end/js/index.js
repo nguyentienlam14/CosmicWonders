@@ -86,8 +86,15 @@ stationButtons.forEach(button => {
     });
 });
 window.onload = function() {
-    showShip('#ships-1');
-    showStation('#station-1');
+    const spaceshipDataElement = document.getElementById('spaceship-data');
+    const firstSpaceship = JSON.parse(spaceshipDataElement.getAttribute('data-spaceships'));
+    const firstSpaceshipName = firstSpaceship[0];
+    showShip('#'+ firstSpaceshipName);
+    
+    const stationDataElement = document.getElementById('station-data');
+    const firstStation = JSON.parse(stationDataElement.getAttribute('data-stations'));
+    const firstStationName = firstStation[0];
+    showStation('#'+ firstStationName);
     shipButtons[0].style.backgroundColor = '#90702f';
     stationButtons[0].style.backgroundColor = '#90702f';
 };

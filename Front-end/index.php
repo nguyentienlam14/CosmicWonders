@@ -264,7 +264,7 @@
                       broader opportunities for discovery on the orbiting laboratory.</span>
                   </div>
                   <div class="col-lg-6 col-12">
-                    <img class="img-fluid w-100 h-auto" src="./assets/img/body/nasas-spacex-crew-2.webp" alt="">
+                    <img class="img-fluid img-5x3" src="./assets/img/body/nasas-spacex-crew-2.webp" alt="">
                     <p>With a view of the iconic Vehicle Assembly Building at left, a SpaceX Falcon 9 rocket soars
                       upward from Launch Complex 39A at NASA’s Kennedy Space Center in Florida on April 23, 2021,
                       carrying the company’s Crew Dragon Endeavour capsule.</p>
@@ -284,7 +284,7 @@
                       broader opportunities for discovery on the orbiting laboratory.</span>
                   </div>
                   <div class="col-lg-6 col-12">
-                    <img class="img-fluid w-100 h-auto" src="./assets/img/body/nasas-spacex-crew-2.webp" alt="">
+                    <img class="img-fluid img-5x3" src="./assets/img/body/nasas-spacex-crew-2.webp" alt="">
                     <p>With a view of the iconic Vehicle Assembly Building at left, a SpaceX Falcon 9 rocket soars
                       upward from Launch Complex 39A at NASA’s Kennedy Space Center in Florida on April 23, 2021,
                       carrying the company’s Crew Dragon Endeavour capsule.</p>
@@ -304,7 +304,7 @@
                       broader opportunities for discovery on the orbiting laboratory.</span>
                   </div>
                   <div class="col-lg-6 col-12">
-                    <img class="img-fluid w-100 h-auto" src="./assets/img/body/nasas-spacex-crew-2.webp" alt="">
+                    <img class="img-fluid img-5x3" src="./assets/img/body/nasas-spacex-crew-2.webp" alt="">
                     <p>With a view of the iconic Vehicle Assembly Building at left, a SpaceX Falcon 9 rocket soars
                       upward from Launch Complex 39A at NASA’s Kennedy Space Center in Florida on April 23, 2021,
                       carrying the company’s Crew Dragon Endeavour capsule.</p>
@@ -338,7 +338,7 @@
                 human crew and other experiments will be carried aboard the Orion spacecraft.</span>
             </div>
             <div class="col-lg-6 col-12">
-              <img class="img-fluid" src="./assets/img/body/station-0.jpg" alt="">
+              <img class="img-fluid img-5x3" src="./assets/img/body/station-0.jpg" alt="">
               <p class="text-justify">This illustration shows Cassini spacecraft in orbit around Saturn. Cassini made 22
                 orbits that swooped
                 between the rings and the planet before ending its mission on Sept. 15, 2017, with a final plunge into
@@ -370,7 +370,7 @@
                       broader opportunities for discovery on the orbiting laboratory.</span>
                   </div>
                   <div class="col-lg-6 col-12">
-                    <img class="img-fluid w-100 h-auto" src="./assets/img/body/nasas-spacex-crew-2.webp" alt="">
+                    <img class="img-fluid img-5x3" src="./assets/img/body/nasas-spacex-crew-2.webp" alt="">
                     <p class="text-justify">With a view of the iconic Vehicle Assembly Building at left, a SpaceX Falcon
                       9 rocket soars
                       upward from Launch Complex 39A at NASA’s Kennedy Space Center in Florida on April 23, 2021,
@@ -391,7 +391,7 @@
                       broader opportunities for discovery on the orbiting laboratory.</span>
                   </div>
                   <div class="col-lg-6 col-12">
-                    <img class="img-fluid w-100 h-auto" src="./assets/img/body/nasas-spacex-crew-2.webp" alt="">
+                    <img class="img-fluid img-5x3" src="./assets/img/body/nasas-spacex-crew-2.webp" alt="">
                     <p>With a view of the iconic Vehicle Assembly Building at left, a SpaceX Falcon 9 rocket soars
                       upward from Launch Complex 39A at NASA’s Kennedy Space Center in Florida on April 23, 2021,
                       carrying the company’s Crew Dragon Endeavour capsule.</p>
@@ -411,7 +411,7 @@
                       broader opportunities for discovery on the orbiting laboratory.</span>
                   </div>
                   <div class="col-lg-6 col-12">
-                    <img class="img-fluid w-100 h-auto" src="./assets/img/body/nasas-spacex-crew-2.webp" alt="">
+                    <img class="img-fluid img-5x3" src="./assets/img/body/nasas-spacex-crew-2.webp" alt="">
                     <p>With a view of the iconic Vehicle Assembly Building at left, a SpaceX Falcon 9 rocket soars
                       upward from Launch Complex 39A at NASA’s Kennedy Space Center in Florida on April 23, 2021,
                       carrying the company’s Crew Dragon Endeavour capsule.</p>
