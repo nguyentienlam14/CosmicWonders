@@ -33,23 +33,15 @@ function showContent(sectionId) {
 
 
 function addEvent() {
-    const addSection = document.getElementById('add');
-    const buttonSection = document.getElementById('but');
-
-    if (addSection && buttonSection) {
-        addSection.style.display = 'block';
-        buttonSection.style.display = 'none';
-    }
+    document.getElementById('add').style.display = 'block';
+    document.getElementById('but').style.display = 'none';
+    document.getElementById('editFormContainer').style.display='none';
 }
 
 function addAstronaut() {
-    const addSection = document.getElementById('add_astronaut');
-    const buttonSection = document.getElementById('but_astronaut');
-
-    if (addSection && buttonSection) {
-        addSection.style.display = 'block';
-        buttonSection.style.display = 'none';
-    }
+    document.getElementById('add_astronaut').style.display = 'block';
+    document.getElementById('but_astronaut').style.display = 'none';
+    document.getElementById('editFormAstronaut').style.display='none';
 }
 
 function back() {
@@ -75,8 +67,14 @@ function backAstronaut() {
 function closeForm() {
     const editFormContainer = document.getElementById('editFormContainer');
     editFormContainer.classList.remove('show');
+    document.getElementById('editFormContainer').style.display='none';
 }
 
+function closeFormAstronaut() {
+    const editFormContainer = document.getElementById('editFormAstronaut');
+    editFormContainer.classList.remove('show');
+    document.getElementById('editFormAstronaut').style.display='none';
+}
 
 function deletePost(Event_detail_ID) {
     Swal.fire({
@@ -105,12 +103,40 @@ function deletePost(Event_detail_ID) {
     })
 }
 
+function deletePostAstronaut(Astronaut_detail_ID) {
+    Swal.fire({
+        title: 'Are you sure?',
+        text: "Bạn có muốn xóa bài này?",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            var form = document.createElement('form');
+            form.method = 'post';
+            form.action = '../../Back-End/admin/events_process.php';
 
-function editPost(Event_detail_ID, Event_detail_sub, Event_detail_title) {
+            var input = document.createElement('input');
+            input.type = 'hidden';
+            input.name = 'deleteAstronaut';
+            input.value = Astronaut_detail_ID;
+            form.appendChild(input);
+
+            document.body.appendChild(form);
+            form.submit();
+        }
+    })
+}
+
+
+function editPost(Event_detail_ID,Event_detail_title, Event_detail_sub) {
     document.getElementById('editID').value = Event_detail_ID;
     document.getElementById('editTitle').value = Event_detail_title;
     document.getElementById('editSub').value = Event_detail_sub;
     document.getElementById('editFormContainer').classList.add('show');
+    document.getElementById('editFormContainer').style.display = 'block';
 }
 
 
@@ -135,6 +161,35 @@ function confirmUpdate(event) {
 
     document.getElementById('editFormContainer').style.display = 'none';
 };
+
+function editPostAstronaut(Astronaut_detail_ID, Astronaut_detail_header_text, Astronaut_detail_sub_text) {
+    document.getElementById('AstronautID').value = Astronaut_detail_ID;
+    document.getElementById('editName').value = Astronaut_detail_header_text;
+    document.getElementById('editBio').value = Astronaut_detail_sub_text;
+    document.getElementById('editFormAstronaut').classList.add('show');
+    document.getElementById('editFormAstronaut').style.display = 'block';
+}
+
+function confirmUpdateAstronaut(event) {
+    event.preventDefault();
+
+    Swal.fire({
+        title: 'Are you sure?',
+        text: "Bạn có muốn sửa thông tin này?",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, update it!'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            event.target.submit(); 
+        }
+    });
+
+    document.getElementById('editFormAstronaut').style.display = 'none';
+}
+
 
 
 

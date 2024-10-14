@@ -26,30 +26,30 @@
 
     <?php
     // Truy vấn dữ liệu từ bảng Event và Event_detail
-    $stmt = $conn->prepare("SELECT e.Event_ID, e.Event_title, e.Event_sub_text, e.Img_url, 
-                               ed.Event_detail_ID, ed.Event_detail_title, ed.Event_detail_sub, ed.Event_detail_img
-                        FROM Event e
-                        LEFT JOIN Event_detail ed ON e.Event_ID = ed.Event_ID
-                        ORDER BY e.Event_ID, ed.Event_detail_ID");
+    $stmt = $conn->prepare("SELECT e.Event_ID, e.Event_title, e.Event_sub_text, e.Img_url, ed.Event_detail_ID, ed.Event_detail_title, ed.Event_detail_sub, ed.Event_detail_img
+                                   FROM Event e
+                                   LEFT JOIN Event_detail ed ON e.Event_ID = ed.Event_ID
+                                   WHERE e.isDelete = 'N' AND (ed.isDelete = 'N' OR ed.isDelete IS NULL)
+                                   ORDER BY e.Event_ID, ed.Event_detail_ID;");
     $stmt->execute();
     $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
     // Nhóm các chi tiết sự kiện theo Event_ID
     $events = [];
     foreach ($results as $row) {
-        // Nếu Event_ID chưa có trong mảng $events, khởi tạo nó
+
         if (!isset($events[$row['Event_ID']])) {
             $events[$row['Event_ID']] = [
                 'Event_ID' => $row['Event_ID'],
                 'Event_title' => $row['Event_title'],
                 'Event_sub_text' => $row['Event_sub_text'],
                 'Img_url' => $row['Img_url'],
-                'details' => [] // Mảng để chứa các chi tiết của sự kiện này
+                'details' => []
             ];
         }
 
-        // Thêm chi tiết sự kiện vào mảng 'details'
-        if ($row['Event_detail_ID']) { // Chỉ thêm nếu có chi tiết sự kiện
+
+        if ($row['Event_detail_ID']) {
             $events[$row['Event_ID']]['details'][] = [
                 'Event_detail_ID' => $row['Event_detail_ID'],
                 'Event_detail_title' => $row['Event_detail_title'],
@@ -133,24 +133,33 @@
 
     <script>
         document.addEventListener("DOMContentLoaded", function() {
-            // Lấy tất cả các nút Read More
+
             const toggleButtons = document.querySelectorAll(".readMoreBtn");
 
-            // Lặp qua tất cả các nút và gán sự kiện click cho mỗi nút
             toggleButtons.forEach(function(button) {
-                const eventID = button.id.split('_')[1]; // Lấy Event_ID từ ID của nút
-                const bbBody = document.getElementById(`bbBody_${eventID}`); // Tìm phần nội dung tương ứng với Event_ID
+                const eventID = button.id.split('_')[1];
+                const bbBody = document.getElementById(`bbBody_${eventID}`);
 
-                // Gán sự kiện click cho nút
                 button.addEventListener("click", function() {
-                    // Chuyển đổi lớp 'd-none' để ẩn hoặc hiển thị nội dung
+                    // Trước khi mở sự kiện mới, đóng tất cả các sự kiện đang mở
+                    toggleButtons.forEach(function(otherButton) {
+                        const otherEventID = otherButton.id.split('_')[1];
+                        const otherBbBody = document.getElementById(`bbBody_${otherEventID}`);
+
+                        if (otherEventID !== eventID) {
+                            otherBbBody.classList.add("d-none"); // Đóng các sự kiện khác
+                            otherButton.innerHTML = 'Read More <i class="fas fa-chevron-down"></i>'; // Đặt lại nút "Read More"
+                        }
+                    });
+
+                    // Toggle sự kiện hiện tại
                     bbBody.classList.toggle("d-none");
 
-                    // Cập nhật nội dung của nút dựa trên trạng thái hiển thị
+                    // Thay đổi nội dung nút dựa trên trạng thái của sự kiện
                     if (bbBody.classList.contains("d-none")) {
-                        button.innerHTML = 'Read More <i class="fas fa-chevron-down"></i>'; // Hiển thị "Read More"
+                        button.innerHTML = 'Read More <i class="fas fa-chevron-down"></i>';
                     } else {
-                        button.innerHTML = '<i class="fas fa-times"></i>'; // Hiển thị dấu "X"
+                        button.innerHTML = '<i class="fas fa-times"></i>';
                     }
                 });
             });

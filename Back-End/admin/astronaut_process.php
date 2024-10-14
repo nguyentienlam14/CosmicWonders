@@ -82,7 +82,7 @@
                     }
 
                     // Chèn dữ liệu vào bảng Astronaut_detail
-                    $stmtDetail = $conn->prepare("INSERT INTO astronaut_detail (Astronaut_detail_title, Astronaut_detail_sub, Astronaut_detail_img, Astronaut_ID) VALUES (:header, :sub_text, :image_path, :astronaut_id)");
+                    $stmtDetail = $conn->prepare("INSERT INTO astronaut_detail (Astronaut_detail_header_text, Astronaut_detail_sub_text, Astronaut_detail_img, Astronaut_ID) VALUES (:header, :sub_text, :image_path, :astronaut_id)");
                     $stmtDetail->bindParam(':header', $header);
                     $stmtDetail->bindParam(':sub_text', $sub_text);
                     $stmtDetail->bindParam(':image_path', $detail_image);
@@ -97,7 +97,7 @@
                         }).then((result) => {
                             if (result.isConfirmed) {
                                 localStorage.setItem('showAstronauts', true);
-                                window.location.href = 'admin.php';
+                                window.location.href = '../../Front-End/admin/admin.php';
                             }
                         });
                         </script>";
@@ -108,8 +108,8 @@
                     throw new Exception("Chưa nhập đầy đủ tiêu đề và nội dung.");
                 }
             }
-        } else if (isset($_POST["delete"])) {
-            $id = $_POST["delete"];
+        } else if (isset($_POST["deleteAstronaut"])) {
+            $id = $_POST["deleteAstronaut"];
 
             $stmt = $conn->prepare("DELETE FROM astronaut_detail WHERE Astronaut_detail_ID = :del");
             $stmt->bindParam(':del', $id);
@@ -123,18 +123,18 @@
                     }).then((result) => {
                         if (result.isConfirmed) {
                             localStorage.setItem('showAstronauts', true);
-                            window.location.href = 'admin.php';
+                            window.location.href = '../../Front-End/admin/admin.php';
                         }
                     });
                     </script>
                 ";
             };
-        } else if (isset($_POST["editID"]) && !empty($_POST["editID"])) {
-            $editID = $_POST["editID"];
-            $editNewTitle = $_POST["editTitle"];
-            $editSub = $_POST["editSub"];
+        } else if (isset($_POST["AstronautID"]) && !empty($_POST["AstronautID"])) {
+            $editID = $_POST["AstronautID"];
+            $editNewTitle = $_POST["editName"];
+            $editSub = $_POST["editBio"];
 
-            $stmt = $conn->prepare("UPDATE astronaut_detail SET Astronaut_detail_title = :newTitle, Astronaut_detail_sub = :sub WHERE Astronaut_detail_ID = :id");
+            $stmt = $conn->prepare("UPDATE astronaut_detail SET Astronaut_detail_header_text = :newTitle, Astronaut_detail_sub_text = :sub WHERE Astronaut_detail_ID = :id");
             $stmt->bindParam(':newTitle', $editNewTitle);
             $stmt->bindParam(':sub', $editSub);
             $stmt->bindParam(':id', $editID);
@@ -148,7 +148,7 @@
                         }).then((result) => {
                             if (result.isConfirmed) {
                                 localStorage.setItem('showAstronauts', true);
-                                window.location.href = 'admin.php';
+                                window.location.href = '../../Front-End/admin/admin.php';
                             }
                         });
                     </script>

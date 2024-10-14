@@ -90,15 +90,15 @@
             </div>
 
 
-
-            <div class="edit-form-container w-50 p-2" id="editFormContainer">
+            <!--Start Update Events -->
+            <div class="w-50 p-2" id="editFormContainer" style="display: none;">
                 <h2>Edit Post</h2>
                 <button type="button" class="btn btn-danger btncl" onclick="closeForm()">X</button>
                 <form id="editForm" action="../../Back-End/admin/events_process.php" method="POST" onsubmit="confirmUpdate(event)">
 
                     <div class="mb-3 mt-3">
                         <label for="editID" class="form-label">ID:</label>
-                        <input type="text" id="editID" name="editID" class="form-control w-50 p-2 mx-auto">
+                        <input type="text" id="editID" name="editID" class="form-control w-50 p-2 mx-auto" readonly>
                     </div>
                     <div class="mb-3">
                         <label for="editTitle" class="form-label">Title:</label>
@@ -106,12 +106,37 @@
                     </div>
                     <div class="mb-3">
                         <label for="editSub" class="form-label">Sub Text:</label>
-                        <input type="text" id="editSub" name="editSub" class="form-control w-50 p-2 mx-auto" required>
+                        <textarea id="editSub" name="editSub" class="form-control w-50 p-2 mx-auto" rows="4" required></textarea>
                     </div>
 
                     <button type="submit" class="btn btn-primary">Update</button>
                 </form>
             </div>
+            <!-- Finish Update Events -->
+
+            <!-- Start Update Astronaut1 -->
+            <div class="w-50 p-2" id="editFormAstronaut" style="display: none;">
+                <h2>Edit Astronaut</h2>
+                <button type="button" class="btn btn-danger btncl" onclick="closeFormAstronaut()">X</button>
+                <form id="editForm" action="../../Back-End/admin/astronaut_process.php" method="POST" onsubmit="confirmUpdateAstronaut(event)">
+
+                    <div class="mb-3 mt-3">
+                        <label for="AstronautID" class="form-label">ID:</label>
+                        <input type="text" id="AstronautID" name="AstronautID" class="form-control w-50 p-2 mx-auto" readonly>
+                    </div>
+                    <div class="mb-3">
+                        <label for="editName" class="form-label">Title:</label>
+                        <input type="text" id="editName" name="editName" class="form-control w-50 p-2 mx-auto" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="editBio" class="form-label">Sub:</label>
+                        <textarea id="editBio" name="editBio" class="form-control w-50 p-2 mx-auto" rows="4" required></textarea>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Update</button>
+                </form>
+            </div>
+            <!-- Finish Update Astronaut1 -->
 
 
 
@@ -161,9 +186,9 @@
 
                 <div id="events" class="hidden">
                     <div id="but">
-                        <h1 class="text-center">Post Management</h1>
+                        <h1 class="text-center">Events Management</h1>
                         <div class="d-flex justify-content-center mt-4">
-                            <button type="button" class="btn btn-secondary mx-2 w-25" onclick="addEvent()">Add Post</button>
+                            <button type="button" class="btn btn-secondary mx-2 w-25" onclick="addEvent()">Add Events Post</button>
                         </div>
 
                         <div class="mt-5">
@@ -172,28 +197,27 @@
                                     <th>ID</th>
                                     <th>EVENT</th>
                                     <th>TITLE</th>
+                                    <th>SUB TEXT</th>
                                     <th>ACTION</th>
                                 </tr>
 
                                 <?php
-
-                                $result = $conn->prepare("SELECT Event_detail_ID, Event_detail_title, Event_detail_sub, Event_title FROM event JOIN event_detail ON event.Event_ID = event_detail.Event_ID");
+                                $result = $conn->prepare("SELECT Event_detail_ID, Event_detail_title, Event_detail_sub, Event_title FROM event JOIN event_detail ON event.Event_ID = event_detail.Event_ID WHERE event_detail.isDelete = 'N'");
                                 $result->execute();
-
 
                                 while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
                                     echo "<tr>";
                                     echo "<td>" . htmlspecialchars($row["Event_detail_ID"]) . "</td>";
                                     echo "<td>" . htmlspecialchars($row["Event_title"]) . "</td>";
                                     echo "<td>" . htmlspecialchars($row["Event_detail_title"]) . "</td>";
+                                    echo "<td>" . htmlspecialchars($row["Event_detail_sub"]) . "</td>";
                                     echo "<td>
                                             <button class='btn btn-danger mx-3' type='button' onclick='deletePost(\"" . addslashes(htmlspecialchars($row['Event_detail_ID'])) . "\")'>Delete</button>
-                                            <button class='btn btn-warning mx-3' type='button' onclick='editPost(\"" . addslashes(htmlspecialchars($row['Event_detail_ID'])) . "\", \"" . addslashes(htmlspecialchars($row['Event_detail_sub'])) . "\", \"" . addslashes(htmlspecialchars($row['Event_detail_title'])) . "\")'>Update</button>
+                                            <button class='btn btn-warning mx-3' type='button' onclick='editPost(\"" . addslashes(htmlspecialchars($row['Event_detail_ID'])) . "\", \"" . addslashes(htmlspecialchars($row['Event_detail_title'])) . "\", \"" . addslashes(htmlspecialchars($row['Event_detail_sub'])) . "\")'>Update</button>
                                          </td>";
                                     echo "</tr>";
                                 }
                                 ?>
-
 
                             </table>
                         </div>
@@ -285,15 +309,15 @@
                                     <th>Action</th>
                                 </tr>
                                 <?php
-                                $result = $conn->query("SELECT Astronaut_detail_ID, Astronaut_detail_title, Astronaut_detail_sub, Astronaut_title FROM astronaut JOIN astronaut_detail ON astronaut.Astronaut_ID = astronaut_detail.Astronaut_ID WHERE Astronaut_title != 'okok'");
+                                $result = $conn->query("SELECT Astronaut_detail_ID, Astronaut_detail_header_text, Astronaut_detail_sub_text, Astronaut_title FROM astronaut JOIN astronaut_detail ON astronaut.Astronaut_ID = astronaut_detail.Astronaut_ID WHERE Astronaut_title != 'okok'");
                                 while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
                                     echo "<tr>";
                                     echo "<td>" . htmlspecialchars($row["Astronaut_detail_ID"]) . "</td>";
                                     echo "<td>" . htmlspecialchars($row["Astronaut_title"]) . "</td>";
-                                    echo "<td>" . htmlspecialchars($row["Astronaut_detail_title"]) . "</td>";
+                                    echo "<td>" . htmlspecialchars($row["Astronaut_detail_header_text"]) . "</td>";
                                     echo "<td>
-                                            <button class='btn btn-danger mx-3' type='button' onclick='deletePost(\"" . addslashes(htmlspecialchars($row['Astronaut_detail_ID'])) . "\")'>Delete</button>
-                                            <button class='btn btn-warning mx-3' type='button' onclick='editPost(\"" . addslashes(htmlspecialchars($row['Astronaut_detail_ID'])) . "\", \"" . addslashes(htmlspecialchars($row['Astronaut_detail_sub'])) . "\", \"" . addslashes(htmlspecialchars($row['Astronaut_detail_title'])) . "\")'>Update</button>
+                                            <button class='btn btn-danger mx-3' type='button' onclick='deletePostAstronaut(\"" . addslashes(htmlspecialchars($row['Astronaut_detail_ID'])) . "\")'>Delete</button>
+                                            <button class='btn btn-warning mx-3' type='button' onclick='editPostAstronaut(\"" . addslashes(htmlspecialchars($row['Astronaut_detail_ID'])) . "\", \"" . addslashes(htmlspecialchars($row['Astronaut_detail_header_text'])) . "\", \"" . addslashes(htmlspecialchars($row['Astronaut_detail_sub_text'])) . "\")'>Update</button>
                                          </td>";
                                     echo "</tr>";
                                 }

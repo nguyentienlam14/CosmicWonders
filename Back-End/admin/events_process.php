@@ -114,7 +114,7 @@
 
             $id = $_POST["delete"];
 
-            $stmt = $conn->prepare("DELETE FROM event_detail WHERE Event_detail_ID = :del");
+            $stmt = $conn->prepare("UPDATE event_detail SET isDelete = 'Y' WHERE Event_detail_ID = :del");
             $stmt->bindParam(':del', $id);
             if ($stmt->execute()) {
                 echo "

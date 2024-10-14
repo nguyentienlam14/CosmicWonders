@@ -145,25 +145,37 @@ tr:nth-child(even) {
 
 #editFormContainer {
     position: relative;
-    display: block;
     text-align: center;
-    background-color: #838383;
+    background-color: #d3d3d3;
     position: absolute;
-    top: 50%;
-    left: 50%;
+    top: 55%;
+    left: 63%;
     transform: translate(-50%, -60px);
-    /* Bắt đầu với modal ở vị trí trên */
     opacity: 0;
-    /* Bắt đầu với modal trong suốt */
     transition: opacity 0.5s ease, transform 0.5s ease;
-    /* Hiệu ứng mượt */
+    z-index: 1;
 }
 
 #editFormContainer.show {
     opacity: 1;
-    /* Khi mở modal sẽ hiển thị */
     transform: translate(-50%, -50%);
-    /* Chuyển modal xuống vị trí giữa */
+}
+
+#editFormAstronaut {
+    position: relative;
+    text-align: center;
+    background-color: #d3d3d3;
+    position: absolute;
+    top: 55%;
+    left: 63%;
+    transform: translate(-50%, -60px);
+    opacity: 0;
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+#editFormAstronaut.show {
+    opacity: 1;
+    transform: translate(-50%, -50%);
 }
 
 .btncl {
