@@ -143,7 +143,13 @@
     <div id="Celestial">
     </div>
     <!-- finish Celestial -->
-
+    <!-- test -->
+    <div class=" mt-5" id="astronaut">
+      <?php
+        include "C:/xampp/htdocs/CosmicWonders/Back-end/Astronaunt/modals/insert_data.php";
+      ?>
+    </div>
+    <!-- test -->
     <!-- start Astronaut -->
     <div class=" mt-5" id="astronaut">
       <div class="astronaut-header p-relative start">

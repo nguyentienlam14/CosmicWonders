@@ -1,9 +1,8 @@
 <?php
-// Định nghĩa lớp Database
 class Database {
     private $username = "root";
     private $password = "";
-    private $dbname = "cosmic_wonders";
+    private $dbname = "cosmicwonders";
     private $conn;  
 
     public function __construct() {
@@ -13,9 +12,7 @@ class Database {
     private function connect() {
         try {
             $this->conn = new PDO("mysql:host=localhost;port=3306;dbname=$this->dbname", $this->username, $this->password);
-            $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            echo "Connected successfully";
-        
+            $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);      
         } catch (PDOException $e) {
             echo "Connection failed: " . $e->getMessage(); 
         }
@@ -29,6 +26,4 @@ class Database {
         $this->conn = null;
     }
 }
-
-$db = new Database();
 ?>
