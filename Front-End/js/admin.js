@@ -71,8 +71,8 @@ function closeForm() {
 }
 
 function closeFormAstronaut() {
-    const editFormContainer = document.getElementById('editFormAstronaut');
-    editFormContainer.classList.remove('show');
+    const editFormAstronaut = document.getElementById('editFormAstronaut');
+    editFormAstronaut.classList.remove('show');
     document.getElementById('editFormAstronaut').style.display='none';
 }
 
