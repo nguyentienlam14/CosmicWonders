@@ -1,17 +1,20 @@
 <?php
-class Database {
+class Database
+{
     private $username = "root";
     private $password = "";
     private $dbname = "CosmicWonders";
     private $conn;
 
-    public function __construct() {
+    public function __construct()
+    {
         $this->connect();
-        $this->createDatabase(); 
-        $this->connectToDatabase(); 
+        $this->createDatabase();
+        $this->connectToDatabase();
     }
 
-    private function connect() {
+    private function connect()
+    {
         try {
             $this->conn = new PDO("mysql:host=localhost;port=3306", $this->username, $this->password);
             $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -21,7 +24,8 @@ class Database {
         }
     }
 
-    private function createDatabase() {
+    private function createDatabase()
+    {
         try {
             $this->conn->exec("CREATE DATABASE IF NOT EXISTS `$this->dbname`");
             echo "Database created successfully or already exists<br>";
@@ -30,7 +34,8 @@ class Database {
         }
     }
 
-    private function connectToDatabase() {
+    private function connectToDatabase()
+    {
         try {
             $this->conn = new PDO("mysql:host=localhost;port=3306;dbname=$this->dbname", $this->username, $this->password);
             $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -40,15 +45,18 @@ class Database {
         }
     }
 
-    public function getConnection() {
+    public function getConnection()
+    {
         return $this->conn;
     }
 
-    public function closeConnection() {
+    public function closeConnection()
+    {
         $this->conn = null;
     }
 
-    public function createTables() {
+    public function createTables()
+    {
         $sql = [
             "CREATE TABLE IF NOT EXISTS Category (
                 Category_ID INT AUTO_INCREMENT PRIMARY KEY,
@@ -176,7 +184,6 @@ class Database {
     }
 }
 
-$db = new Database();   
+$db = new Database();
 $db->createTables();
 $db->closeConnection();
-?>

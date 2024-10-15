@@ -3,14 +3,14 @@ const navbar = document.querySelector('.navbar-header');
 let lastScrollTop = 0;
 
 window.addEventListener('scroll', () => {
-  const scrollPosition = window.scrollY; 
-  const headerHeight = header.offsetHeight;
-  if(lastScrollTop < headerHeight||scrollPosition < lastScrollTop){
-    navbar.classList.remove('hidden');
-  }else {
-    navbar.classList.add('hidden')
-  }
-  lastScrollTop = scrollPosition;
+    const scrollPosition = window.scrollY;
+    const headerHeight = header.offsetHeight;
+    if (lastScrollTop < headerHeight || scrollPosition < lastScrollTop) {
+        navbar.classList.remove('hidden');
+    } else {
+        navbar.classList.add('hidden')
+    }
+    lastScrollTop = scrollPosition;
 });
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     readmoreButtons.forEach(button => {
         button.addEventListener('click', () => {
-            const detailsElement = button.parentElement.nextElementSibling; 
+            const detailsElement = button.parentElement.nextElementSibling;
 
             detailsElements.forEach(detail => {
                 if (detail !== detailsElement) {
@@ -85,38 +85,23 @@ stationButtons.forEach(button => {
         showStation(targetId2);
     });
 });
-window.onload = function() {
-    const spaceshipDataElement = document.getElementById('spaceship-data');
-    const firstSpaceship = JSON.parse(spaceshipDataElement.getAttribute('data-spaceships'));
-    const firstSpaceshipName = firstSpaceship[0];
-    showShip('#'+ firstSpaceshipName);
-    
-    const stationDataElement = document.getElementById('station-data');
-    const firstStation = JSON.parse(stationDataElement.getAttribute('data-stations'));
-    const firstStationName = firstStation[0];
-    showStation('#'+ firstStationName);
-    shipButtons[0].style.backgroundColor = '#90702f';
-    stationButtons[0].style.backgroundColor = '#90702f';
+window.onload = function () {
+    if (firstSpaceshipName) {
+        showShip('#' + firstSpaceshipName);
+        const spaceshipButtons = document.querySelectorAll('.category button');
+        spaceshipButtons.forEach(button => {
+            if (button.getAttribute('data-target') === '#' + firstSpaceshipName) {
+                button.style.backgroundColor = '#90702f';
+            }
+        });
+    }
+    if (firstStationName) {
+        showStation('#' + firstStationName);
+        const stationpButtons = document.querySelectorAll('.category2 button');
+        stationpButtons.forEach(button => {
+            if (button.getAttribute('data-target') === '#' + firstStationName) {
+                button.style.backgroundColor = '#90702f';
+            }
+        });
+    }
 };
-
-document.addEventListener('DOMContentLoaded', function() {
-    const stationModal = document.getElementById('stationModal');
-    const overlay = document.getElementById('overlay');
-
-    stationModal.addEventListener('show.bs.modal', function (event) {
-        overlay.style.display = 'block';
-        const button = event.relatedTarget; 
-        const title = button.getAttribute('data-bs-title');
-        const content = button.getAttribute('data-bs-content'); 
-
-        const modalTitle = stationModal.querySelector('.modal-title');
-        const modalContent = stationModal.querySelector('#stationContent');
-
-        modalTitle.textContent = title; 
-        modalContent.textContent = content;
-    });
-
-    stationModal.addEventListener('hidden.bs.modal', function () {
-        overlay.style.display = 'none';
-    });
-});
