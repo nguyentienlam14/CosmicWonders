@@ -1,31 +1,32 @@
-document.addEventListener("DOMContentLoaded", function () {
-    function setupToggle(toggleBtnId, bbBodyId, otherToggleBtnId, otherBbBodyId) {
-      const toggleBtn = document.getElementById(toggleBtnId);
-      const bbBody = document.getElementById(bbBodyId);
-      const otherToggleBtn = document.getElementById(otherToggleBtnId);
-      const otherBbBody = document.getElementById(otherBbBodyId);
-  
-      toggleBtn.addEventListener('click', function () {
-        // Chuyển đổi class 'd-none' để hiển thị/ẩn nội dung
-        bbBody.classList.toggle('d-none');
-  
-        // Đóng nội dung khác nếu nó đang mở
-        if (!otherBbBody.classList.contains('d-none')) {
-          otherBbBody.classList.add('d-none');
-          otherToggleBtn.innerHTML = 'Read More <i class="fas fa-chevron-down"></i>';
-        }
-  
-        // Thay đổi văn bản và biểu tượng của nút dựa trên trạng thái hiển thị
-        if (bbBody.classList.contains('d-none')) {
-          toggleBtn.innerHTML = 'Read More <i class="fas fa-chevron-down"></i>'; // Hiển thị Read More
-        } else {
-          toggleBtn.innerHTML = '<i class="fas fa-times"></i>'; // Hiển thị dấu X
-        }
+document.addEventListener("DOMContentLoaded", function() {
+
+  const toggleButtons = document.querySelectorAll(".readMoreBtn");
+
+  toggleButtons.forEach(function(button) {
+      const eventID = button.id.split('_')[1];
+      const bbBody = document.getElementById(`bbBody_${eventID}`);
+
+      button.addEventListener("click", function() {
+          // Trước khi mở sự kiện mới, đóng tất cả các sự kiện đang mở
+          toggleButtons.forEach(function(otherButton) {
+              const otherEventID = otherButton.id.split('_')[1];
+              const otherBbBody = document.getElementById(`bbBody_${otherEventID}`);
+
+              if (otherEventID !== eventID) {
+                  otherBbBody.classList.add("d-none"); // Đóng các sự kiện khác
+                  otherButton.innerHTML = 'Read More <i class="fas fa-chevron-down"></i>'; // Đặt lại nút "Read More"
+              }
+          });
+
+          // Toggle sự kiện hiện tại
+          bbBody.classList.toggle("d-none");
+
+          // Thay đổi nội dung nút dựa trên trạng thái của sự kiện
+          if (bbBody.classList.contains("d-none")) {
+              button.innerHTML = 'Read More <i class="fas fa-chevron-down"></i>';
+          } else {
+              button.innerHTML = '<i class="fas fa-times"></i>';
+          }
       });
-    }
-  
-    // Thiết lập toggle cho cả hai nút và nội dung, và đảm bảo đóng bài viết khác
-    setupToggle('toggleBtn', 'bbBody', 'toggleBtn2', 'bbBody2');
-    setupToggle('toggleBtn2', 'bbBody2', 'toggleBtn', 'bbBody');
   });
-  
+});
