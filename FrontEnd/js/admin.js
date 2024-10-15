@@ -38,6 +38,12 @@ function addEvent() {
     document.getElementById('editFormContainer').style.display='none';
 }
 
+function addCelestial() {
+    document.getElementById('add_celestial').style.display = 'block';
+    document.getElementById('but_celestial').style.display = 'none';
+    document.getElementById('editFormContainer').style.display='none';
+}
+
 function addAstronaut() {
     document.getElementById('add_astronaut').style.display = 'block';
     document.getElementById('but_astronaut').style.display = 'none';
@@ -51,6 +57,16 @@ function back() {
     if (addEvent && buttonEvent) {
         addEvent.style.display = 'none';
         buttonEvent.style.display = 'block';
+    }
+}
+
+function backCelestial() {
+    const addCelestial = document.getElementById('add_celestial');
+    const buttonCelestial = document.getElementById('but_celestial');
+
+    if (addCelestial && buttonCelestial) {
+        addCelestial.style.display = 'none';
+        buttonCelestial.style.display = 'block';
     }
 }
 
@@ -68,6 +84,12 @@ function closeForm() {
     const editFormContainer = document.getElementById('editFormContainer');
     editFormContainer.classList.remove('show');
     document.getElementById('editFormContainer').style.display='none';
+}
+
+function closeFormCelestial() {
+    const editFormAstronaut = document.getElementById('editFormAstronaut');
+    editFormAstronaut.classList.remove('show');
+    document.getElementById('editFormAstronaut').style.display='none';
 }
 
 function closeFormAstronaut() {

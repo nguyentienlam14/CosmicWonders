@@ -719,6 +719,7 @@
             the benefit of humanity, and inspiring the world through
             discovery.
           </p>
+          <a href="./loginadmin/login.php" class="text-white text-decoration-none ms-3">Login</a>
         </div>
 
         <div class="col-lg-9 text-center footer-column">
@@ -727,54 +728,51 @@
               <h4 class="text-light text-decoration-underline mb-3">Home</h4>
               <ul class="list-unstyled">
                 <li>
-                  <a href="#" class="text-white text-decoration-none">Planet</a>
+                  <a href="#" class="text-white text-decoration-none">Events</a>
                 </li>
                 <li>
-                  <a href="#" class="text-white text-decoration-none">Constellation</a>
+                  <a href="#" class="text-white text-decoration-none">Celestial</a>
                 </li>
                 <li>
-                  <a href="#" class="text-white text-decoration-none">Spaceship</a>
+                  <a href="#" class="text-white text-decoration-none">Astronauts</a>
+                </li>
+                
+              </ul>
+            </div>
+            <div class="col-md-3">
+              <h4 class="text-light text-decoration-underline mb-3">
+                Events
+              </h4>
+              <ul class="list-unstyled">
+                <li>
+                  <a href="#" class="text-white text-decoration-none">Big Bang</a>
                 </li>
                 <li>
-                  <a href="#" class="text-white text-decoration-none">Telescope</a>
+                  <a href="#" class="text-white text-decoration-none">Black Holes</a>
                 </li>
               </ul>
             </div>
             <div class="col-md-3">
               <h4 class="text-light text-decoration-underline mb-3">
-                Explore the Universe
+                Celestial
               </h4>
               <ul class="list-unstyled">
-                <li>
-                  <a href="#" class="text-white text-decoration-none">Planets</a>
-                </li>
                 <li>
                   <a href="#" class="text-white text-decoration-none">Stars</a>
                 </li>
-              </ul>
-            </div>
-            <div class="col-md-3">
-              <h4 class="text-light text-decoration-underline mb-3">
-                Humans In Space
-              </h4>
-              <ul class="list-unstyled">
                 <li>
-                  <a href="#" class="text-white text-decoration-none">Spaceship</a>
-                </li>
-                <li>
-                  <a href="#" class="text-white text-decoration-none">Telescope</a>
+                  <a href="#" class="text-white text-decoration-none">Planet</a>
                 </li>
               </ul>
             </div>
             <div class="col-md-3">
               <h4 class="text-light text-decoration-underline mb-3">
-                Group Member
+                Astronauts
               </h4>
               <ul class="list-unstyled">
-                <li>Nguyễn Tiến Lâm (leader)</li>
-                <li>Đồng Nhân Hiệp</li>
-                <li>Nguyễn Mạnh Hùng</li>
-                <li>Phạm Hoàng Anh</li>
+                <li><a href="#" class="text-white text-decoration-none">Journey of Exploration</a></li>
+                <li><a href="#" class="text-white text-decoration-none">Why Go to Space?</a></li>
+                <li><a href="#" class="text-white text-decoration-none">Spaceships and Rockets</a></li>
               </ul>
             </div>
           </div>

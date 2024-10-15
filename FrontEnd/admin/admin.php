@@ -35,14 +35,16 @@
                 <!-- Thông tin người dùng với icon -->
                 <div class="d-flex align-items-center">
                     <i class="fas fa-user-circle fa-2x text-muted me-2"></i> <!-- Icon người dùng -->
-                    <span class="text-muted">Xin chào, Đặng Tiến Lâm</span>
+                    <span class="text-muted">Hello, Admin</span>
                 </div>
 
                 <!-- Nút đăng xuất với icon -->
-                <button class="btn btn-danger btn-sm d-flex align-items-center">
-                    <i class="fas fa-sign-out-alt me-2"></i> <!-- Icon đăng xuất -->
-                    Đăng Xuất
-                </button>
+                <form action="../../BackEnd/admin/logout.php">
+                    <button class="btn btn-danger btn-sm d-flex align-items-center">
+                        <i class="fas fa-sign-out-alt me-2"></i> <!-- Icon đăng xuất -->
+                        Logout
+                    </button>
+                </form>
             </div>
         </div>
 
@@ -282,6 +284,127 @@
                 </div>
 
 
+                <div id="celestial" class="hidden">
+                    <div id="but_celestial">
+                        <h1 class="text-center">Post Management</h1>
+                        <div class="d-flex justify-content-center mt-4">
+                            <button type="button" class="btn btn-secondary mx-2 w-25" onclick="addCelestial()">Add Celestial Post</button>
+                        </div>
+                        <div class="mt-5">
+                            <table>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Title</th>
+                                    <th>Short Description</th>
+                                    <th>Other Details</th>
+                                    <th>Discovery Date</th>
+                                    <th>Size</th>
+                                    <th>Ozone</th>
+                                    <th>Distance from Earth</th>
+                                    <th>Celestial Body ID</th>
+                                    <th>Image</th>
+                                    <th>Action</th>
+                                </tr>
+
+                                <?php
+                                $result = $conn->prepare("SELECT cd.Celestial_detail_ID, cd.Celestial_detail_title, cd.Celestial_detail_sub, cd.Other_details, cd.Celestial_discovery_date, cd.Celestial_size, cd.Celestial_ozone, cd.Celestial_distance_s_e, c.Celestial_ID, cd.Celestial_detail_img FROM celestial_detail cd INNER JOIN celestial c ON c.Celestial_ID = cd.Celestial_ID WHERE c.isDelete = 'N'");
+                                $result->execute();
+
+                                while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+                                    echo "<tr>
+                                            <td>" . htmlspecialchars($row['Celestial_detail_ID']) . "</td>
+                                            <td>" . htmlspecialchars($row['Celestial_detail_title']) . "</td>
+                                            <td>" . htmlspecialchars($row['Celestial_detail_sub']) . "</td>
+                                            <td>" . htmlspecialchars($row['Other_details']) . "</td>
+                                            <td>" . htmlspecialchars($row['Celestial_discovery_date']) . "</td>
+                                            <td>" . htmlspecialchars($row['Celestial_size']) . "</td>
+                                            <td>" . htmlspecialchars($row['Celestial_ozone']) . "</td>
+                                            <td>" . htmlspecialchars($row['Celestial_distance_s_e']) . "</td>
+                                            <td>" . htmlspecialchars($row['Celestial_ID']) . "</td>
+                                            <td>
+                                                <img src='../../BackEnd/Celestial" . htmlspecialchars($row['Celestial_detail_img']) . "' alt='Hình Ảnh' width='100' height='100'>
+                                            </td>
+                                            <td>
+                                                <a href='update.php?id=" . $row['Celestial_detail_ID'] . "' class='btn btn-warning btn-sm'>Update</a>   
+                                                <a href='../../BackEnd/Celestial/delete.php?id=" . $row['Celestial_detail_ID'] . "' class='btn btn-danger btn-sm' onclick='return confirm(\"Bạn có chắc chắn muốn xóa không?\");'>Delete</a>
+                                            </td>
+                                        </tr>";
+                                }
+                                ?>
+                            </table>
+                        </div>
+                    </div>
+
+
+                    <div id="add_celestial" class="p-4 bg-light rounded shadow-sm">
+                        <h1 class="text-center mb-4">ADD CELESTIAL</h1>
+                        <button type="button" class="btn btn-danger back mb-3 d-flex align-items-center" onclick="backCelestial()">
+                            <i class="fas fa-arrow-left me-2"></i> Back
+                        </button>
+
+                        <form action="../../BackEnd/Celestial/process_insert.php" method="POST" enctype="multipart/form-data" class="d-flex flex-column align-items-center">
+
+
+                            <div class="mb-3 w-75">
+                                <label for="celestial_detail_title" class="form-label">Title</label>
+                                <input type="text" class="form-control" id="celestial_detail_title" name="celestial_detail_title" required>
+                            </div>
+
+                            <div class="mb-3 w-75">
+                                <label for="celestial_detail_sub" class="form-label">Short Description</label>
+                                <input type="text" class="form-control" id="celestial_detail_sub" name="celestial_detail_sub" required>
+                            </div>
+
+                            <div class="mb-3 w-75">
+                                <label for="other_details" class="form-label">Other Details</label>
+                                <textarea class="form-control" id="other_details" name="other_details"></textarea>
+                            </div>
+
+                            <div class="mb-3 w-75">
+                                <label for="celestial_discovery_date" class="form-label">Discovery Date</label>
+                                <textarea type="text" class="form-control" id="celestial_discovery_date" name="celestial_discovery_date"></textarea>
+                            </div>
+
+                            <div class="mb-3 w-75">
+                                <label for="celestial_size" class="form-label">Size</label>
+                                <input type="text" class="form-control" id="celestial_size" name="celestial_size">
+                            </div>
+
+                            <div class="mb-3 w-75">
+                                <label for="celestial_ozone" class="form-label">Ozone</label>
+                                <input type="text" class="form-control" id="celestial_ozone" name="celestial_ozone">
+                            </div>
+
+                            <div class="mb-3 w-75">
+                                <label for="celestial_distance_s_e" class="form-label">Distance from Earth</label>
+                                <input type="text" class="form-control" id="celestial_distance_s_e" name="celestial_distance_s_e">
+                            </div>
+
+                            <div class="mb-3 w-75">
+                                <label for="celestial_id" class="form-label">Celestial Body ID</label>
+                                <select id="celestial_id" name="celestial_id" class="form-control" required>
+                                    <option value="">Select Celestial</option>
+                                    <?php
+                                    $sql = "SELECT Celestial_ID, Celestial_type FROM Celestial WHERE isDelete = 'N'";
+                                    $result = $conn->query($sql);
+                                    while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+                                        echo "<option value='" . $row['Celestial_ID'] . "'>" . htmlspecialchars($row['Celestial_type']) . "</option>";
+                                    }
+                                    ?>
+                                </select>
+                            </div>
+
+                            <div class="mb-3 w-75">
+                                <label for="celestial_detail_img" class="form-label">Image</label>
+                                <input type="file" class="form-control" id="celestial_detail_img" name="celestial_detail_img">
+                            </div>
+
+                            <div class="d-flex justify-content-center mt-4 w-75">
+                                <button type="submit" class="btn btn-secondary w-25" onclick="">Post</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
 
                 <div id="astronaut_details" class="hidden">
 

@@ -1,5 +1,5 @@
 <?php
-include '../BackEnd/config.php';
+include '../config.php';
 
 
 $sql = "SELECT 

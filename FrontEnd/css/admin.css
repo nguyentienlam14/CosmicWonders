@@ -107,6 +107,17 @@
 }
 
 #add,
+#add_celestial {
+    display: none;
+    position: relative;
+}
+
+#but,
+#but_celestial {
+    display: block;
+}
+
+#add,
 #add_astronaut {
     display: none;
     position: relative;
