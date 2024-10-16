@@ -137,7 +137,7 @@
     <!-- finish general -->
 
     <!-- start Event -->
-    <?php include_once '../BackEnd/Events/events.php'; ?>
+    <?php include 'C:\xampp\htdocs\CosmicWonders\BackEnd\Events\events.php'; ?>
     <div class="main-content container-fluid">
       <div id="events">
         <h1 class="text-center">EVENTS</h1>
@@ -146,12 +146,9 @@
           <div id="bigbang" class="container-fluid">
             <div class="bb_content container-fluid">
               <div class="bb_content">
-                <!-- Phần tiêu đề (bb_header) lấy từ bảng Event -->
-                <div class="bb_header row text-start" style="background-image: url('../BackEnd/<?= $event['Img_url'] ?>');">
+                <div class="bb_header row text-start" style="background-image: url('../BackEnd/uploads/<?php echo htmlspecialchars( $event['Img_url']); ?>');">
                   <div class="col-12">
-                    <!-- Hiển thị tiêu đề sự kiện từ Event_title -->
                     <h2 class="m-0"><?= $event['Event_title'] ?></h2>
-                    <!-- Hiển thị mô tả sự kiện từ Event_sub_text -->
                     <div class="text1"><?= $event['Event_sub_text'] ?></div>
                   </div>
 
@@ -163,10 +160,8 @@
                   </div>
                 </div>
 
-                <!-- Phần nội dung chi tiết (bb_body) lấy từ bảng Event_detail -->
                 <div class="bb_body p-5 d-none" id="bbBody_<?= $event['Event_ID'] ?>" style="width: 100%;">
                   <div class="row">
-                    <!-- Menu (Nếu cần hiển thị) -->
                     <div class="col-12 col-md-3">
                       <ul class="bb_menu_list">
                         <li>Content</li>
@@ -184,11 +179,11 @@
                             <!-- Hiển thị tiêu đề chi tiết sự kiện -->
                             <h3><?= $detail['Event_detail_title'] ?></h3>
                             <!-- Hiển thị mô tả phụ -->
-                            <p><?= $detail['Event_detail_sub'] ?></p>
+                            <p><?= $detail['Event_detail_sub_text'] ?></p>
 
                             <!-- Hiển thị hình ảnh nếu có -->
                             <?php if (!empty($detail['Event_detail_img'])): ?>
-                              <img class="img-fluid" src="../BackEnd/<?= $detail['Event_detail_img'] ?>" alt="<?= $detail['Event_detail_title'] ?>">
+                              <img class="img-fluid" src='../BackEnd/uploads/<?php echo htmlspecialchars($detail['Event_detail_img']); ?>' alt="<?= $detail['Event_detail_title'] ?>">
                               <!-- <img src='../../BackEnd/" . htmlspecialchars($row['Event_detail_img'] ?? '') . "' alt='Event Image' width='100' height='100'> -->
                             <?php endif; ?>
                           </div>

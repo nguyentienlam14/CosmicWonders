@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <title>Edit Astronaut</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> <!-- Để thông báo -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> 
 </head>
 <body>
 <?php
-include 'C:/xampp/htdocs/CosmicWonders/BackEnd/config.php'; // Đảm bảo đường dẫn chính xác
+include 'C:/xampp/htdocs/CosmicWonders/BackEnd/config.php'; 
 
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
@@ -33,7 +33,6 @@ if (isset($_GET['id'])) {
         $title = $_POST['title'] ?? '';
         $subtitle = $_POST['subtitle'] ?? '';
 
-        // Cập nhật thông tin phi hành gia
         $updateSql = "UPDATE Astronaut SET Astronaut_title = :title, Astronaut_subtitle = :subtitle WHERE Astronaut_ID = :id";
         $updateStmt = $conn->prepare($updateSql);
         $updateStmt->execute(['title' => $title, 'subtitle' => $subtitle, 'id' => $id]);
@@ -48,7 +47,7 @@ if (isset($_GET['id'])) {
             $detailImgUrl = ""; 
             if (isset($_FILES['detailImage']['name'][$index]) && $_FILES['detailImage']['error'][$index] == 0) {
                 $detailFileName = $_FILES['detailImage']['name'][$index];
-                $detailTargetDirectory = "C:/xampp/htdocs/CosmicWonders/Front-end/assets/img/body/";
+                $detailTargetDirectory = "C:/xampp/htdocs/CosmicWonders/FrontEnd/assets/img/body/";
                 $detailTargetFile = $detailTargetDirectory . basename($detailFileName);
 
                 if (!is_dir($detailTargetDirectory) || !is_writable($detailTargetDirectory)) {
@@ -103,7 +102,7 @@ if (isset($_GET['id'])) {
         </div>
         <div class="mb-3">
             <label for="image" class="form-label">Choose Image:</label>
-            <input type="file" id="image" name="image" class="form-control"> <!-- Không yêu cầu tải lên ảnh -->
+            <input type="file" id="image" name="image" class="form-control">
         </div>
         <h3>Astronaut Detail</h3>
         <div id="detailContainer">

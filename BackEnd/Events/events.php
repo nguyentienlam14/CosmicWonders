@@ -1,6 +1,6 @@
 
     <?php
-    include '../BackEnd/config.php';
+    include 'C:\xampp\htdocs\CosmicWonders\BackEnd\config.php';
 
     // Truy vấn dữ liệu từ bảng Event và Event_detail
     $stmt = $conn->prepare("SELECT e.Event_ID, e.Event_title, e.Event_sub_text, e.Img_url, ed.Event_detail_ID, ed.Event_detail_title, ed.Event_detail_sub_text, ed.Event_detail_img

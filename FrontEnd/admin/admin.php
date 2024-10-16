@@ -89,7 +89,7 @@
             <div class="w-50 p-2" id="editFormContainer" style="display: none;">
                 <h2>Edit Post</h2>
                 <button type="button" class="btn btn-danger btncl" onclick="closeForm()">X</button>
-                <form id="editForm" action="../../Back-End/admin/events_process.php" method="POST" enctype="multipart/form-data" onsubmit="confirmUpdate(event)">
+                <form id="editForm" action="../../BackEnd/admin/events_process.php" method="POST" enctype="multipart/form-data" onsubmit="confirmUpdate(event)">
                     <div class="row">
                         <div class="col-6">
                             <div class="mb-3">

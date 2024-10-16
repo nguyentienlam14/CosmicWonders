@@ -1,12 +1,11 @@
 <?php
-include '../config.php'; // Kết nối đến cơ sở dữ liệu
+include '../config.php';
 
-// Kiểm tra kết nối
 if (!$conn) {
     die("Kết nối thất bại: " . mysqli_connect_error());
 }
 
-// Nhận dữ liệu từ form
+
 $celestial_detail_title = $_POST['celestial_detail_title'];
 $celestial_detail_sub = $_POST['celestial_detail_sub'];
 $other_details = $_POST['other_details'];
@@ -14,10 +13,10 @@ $celestial_discovery_date = $_POST['celestial_discovery_date'];
 $celestial_size = $_POST['celestial_size'];
 $celestial_ozone = $_POST['celestial_ozone'];
 $celestial_distance_s_e = $_POST['celestial_distance_s_e'];
-$celestial_id = $_POST['celestial_id']; // Đảm bảo trường này có dữ liệu hợp lệ
+$celestial_id = $_POST['celestial_id']; 
 $celestial_detail_img = $_FILES['celestial_detail_img']['name'];
 
-// Kiểm tra xem celestial_id có được gửi không
+
 if (empty($celestial_id)) {
     die("Lỗi: celestial_id không được cung cấp.");
 }
@@ -62,4 +61,3 @@ if ($stmt->execute()) {
 
 // Đóng kết nối
 $conn = null; // Đặt biến $conn thành null
-?>
