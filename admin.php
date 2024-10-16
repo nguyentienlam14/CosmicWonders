@@ -44,17 +44,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $astronautId = $conn->lastInsertId();
         if (isset($_POST['detailHeaderText'])) {
             foreach ($_POST['detailHeaderText'] as $index => $headerText) {
-                // Kiểm tra và xử lý hình ảnh chi tiết
-                $detailImgUrl = null; // Mặc định là null nếu không có hình ảnh
-
+                $detailImgUrl = null; 
                 if (isset($_FILES['detailImg']) && isset($_FILES['detailImg'][$index]) && $_FILES['detailImg'][$index]['error'] == 0) {
                     $detailFileName = $_FILES['detailImg'][$index]['name'];
                     $detailTargetFile = $targetDirectory . basename($detailFileName);
                     move_uploaded_file($_FILES['detailImg'][$index]['tmp_name'], $detailTargetFile);
                     $detailImgUrl = "http://localhost:81/CosmicWonders/Front-end/assets/img/body/" . $detailFileName; 
                 }
-
-                // Chèn dữ liệu chi tiết phi hành gia vào cơ sở dữ liệu
                 $detailSql = "INSERT INTO Astronaut_detail (Astronaut_detail_header_text, Astronaut_detail_header_subtext, Astronaut_detail_sub_text, 
                               Astronaut_detail_img, Astronaut_detail_img_sub_text, Astronaut_ID, Astronaut_detail_type) 
                               VALUES (:header_text, :header_subtext, :sub_text, :img, :img_subtext, :astronaut_id, :detail_type)";
@@ -62,10 +58,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $detailStmt = $conn->prepare($detailSql);
                 $detailStmt->execute([
                     'header_text' => $headerText,
-                    'header_subtext' => $_POST['detailHeaderSubtext'][$index] ?? null, // Kiểm tra tồn tại
-                    'sub_text' => $_POST['detailSubText'][$index] ?? null, // Kiểm tra tồn tại
+                    'header_subtext' => $_POST['detailHeaderSubtext'][$index] ?? null, 
+                    'sub_text' => $_POST['detailSubText'][$index] ?? null, 
                     'img' => $detailImgUrl,
-                    'img_subtext' => $_POST['detailImgSubText'][$index] ?? null, // Kiểm tra tồn tại
+                    'img_subtext' => $_POST['detailImgSubText'][$index] ?? null,
                     'astronaut_id' => $astronautId,
                     'detail_type' => 1
                 ]);
