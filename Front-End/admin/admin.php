@@ -94,19 +94,33 @@
             <div class="w-50 p-2" id="editFormContainer" style="display: none;">
                 <h2>Edit Post</h2>
                 <button type="button" class="btn btn-danger btncl" onclick="closeForm()">X</button>
-                <form id="editForm" action="../../Back-End/admin/events_process.php" method="POST" onsubmit="confirmUpdate(event)">
+                <form id="editForm" action="../../Back-End/admin/events_process.php" method="POST" enctype="multipart/form-data" onsubmit="confirmUpdate(event)">
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="mb-3">
+                                <label for="editID" class="form-label">ID:</label>
+                                <input type="text" id="editID" name="editID" class="form-control w-100 p-2 mx-auto" readonly>
+                            </div>
+                            <div class="mb-3">
+                                <label for="editTitle" class="form-label">Title:</label>
+                                <input type="text" id="editTitle" name="editTitle" class="form-control w-100 p-2 mx-auto" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="editSub" class="form-label">Sub Text:</label>
+                                <textarea id="editSub" name="editSub" class="form-control w-100 p-2 mx-auto" rows="4" required></textarea>
+                            </div>
+                        </div>
 
-                    <div class="mb-3 mt-3">
-                        <label for="editID" class="form-label">ID:</label>
-                        <input type="text" id="editID" name="editID" class="form-control w-50 p-2 mx-auto" readonly>
-                    </div>
-                    <div class="mb-3">
-                        <label for="editTitle" class="form-label">Title:</label>
-                        <input type="text" id="editTitle" name="editTitle" class="form-control w-50 p-2 mx-auto" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="editSub" class="form-label">Sub Text:</label>
-                        <textarea id="editSub" name="editSub" class="form-control w-50 p-2 mx-auto" rows="4" required></textarea>
+                        <div class="col-6">
+                            <div class="mb-3">
+                                <label class="form-label">Current Image:</label>
+                                <img id="currentImage" src="" alt="No Data" class="img-fluid w-75 mx-auto d-block" style="display: none;">
+                            </div>
+                            <div class="mb-3">
+                                <label for="editImage" class="form-label">Choose New Image:</label>
+                                <input type="file" id="editImage" name="editImage" class="form-control w-100 p-2 mx-auto" required>
+                            </div>
+                        </div>
                     </div>
 
                     <button type="submit" class="btn btn-primary">Update</button>
@@ -198,11 +212,12 @@
                                     <th>EVENT</th>
                                     <th>TITLE</th>
                                     <th>SUB TEXT</th>
+                                    <th>IMG</th>
                                     <th>ACTION</th>
                                 </tr>
 
                                 <?php
-                                $result = $conn->prepare("SELECT Event_detail_ID, Event_detail_title, Event_detail_sub, Event_title FROM event JOIN event_detail ON event.Event_ID = event_detail.Event_ID WHERE event_detail.isDelete = 'N'");
+                                $result = $conn->prepare("SELECT Event_detail_ID, Event_detail_title, Event_detail_sub, Event_detail_img, Event_title FROM event JOIN event_detail ON event.Event_ID = event_detail.Event_ID WHERE event_detail.isDelete = 'N'");
                                 $result->execute();
 
                                 while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
@@ -211,9 +226,10 @@
                                     echo "<td>" . htmlspecialchars($row["Event_title"]) . "</td>";
                                     echo "<td>" . htmlspecialchars($row["Event_detail_title"]) . "</td>";
                                     echo "<td>" . htmlspecialchars($row["Event_detail_sub"]) . "</td>";
+                                    echo "<td><img src='../../Back-End" . htmlspecialchars($row['Event_detail_img'] ?? '') . "' alt='Event Image' width='100' height='100'></td>";
                                     echo "<td>
-                                            <button class='btn btn-danger mx-3' type='button' onclick='deletePost(\"" . addslashes(htmlspecialchars($row['Event_detail_ID'])) . "\")'>Delete</button>
-                                            <button class='btn btn-warning mx-3' type='button' onclick='editPost(\"" . addslashes(htmlspecialchars($row['Event_detail_ID'])) . "\", \"" . addslashes(htmlspecialchars($row['Event_detail_title'])) . "\", \"" . addslashes(htmlspecialchars($row['Event_detail_sub'])) . "\")'>Update</button>
+                                            <button class='btn btn-danger' type='button' onclick='deletePost(\"" . addslashes(htmlspecialchars($row['Event_detail_ID'])) . "\")'>Delete</button>
+                                            <button class='btn btn-warning' type='button' onclick='editPost(\"" . addslashes(htmlspecialchars($row['Event_detail_ID'])) . "\", \"" . addslashes(htmlspecialchars($row['Event_detail_title'])) . "\", \"" . addslashes(htmlspecialchars($row['Event_detail_sub'])) . "\", \"" . addslashes(htmlspecialchars($row['Event_detail_img'])) . "\")'>Update</button>
                                          </td>";
                                     echo "</tr>";
                                 }

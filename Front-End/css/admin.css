@@ -49,51 +49,33 @@
 
 .sidebar .dropdown-menu {
     display: none;
-    /* Ẩn mặc định */
     opacity: 0;
-    /* Đặt độ mờ ban đầu */
     transition: opacity 0.2s ease;
-    /* Hiệu ứng mờ */
     margin-top: 5px;
-    /* Khoảng cách giữa dropdown và phần trên */
     background-color: #f8f9fa;
-    /* Màu nền cho dropdown */
     border: 1px solid #ced4da;
-    /* Viền cho dropdown */
     border-radius: 5px;
-    /* Bo tròn góc */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    /* Đổ bóng */
     left: 50%;
-    /* Căn giữa */
     transform: translateX(-50%);
-    /* Để căn giữa chính xác */
     width: 200px;
-    /* Chiều rộng của dropdown, có thể điều chỉnh */
 }
 
 .sidebar .dropdown-item {
     color: #343a40;
-    /* Màu chữ cho item */
     transition: background-color 0.3s;
-    /* Hiệu ứng chuyển màu khi hover */
     text-align: center;
-    /* Căn giữa nội dung bên trong item */
 }
 
 
 .sidebar .dropdown-item {
     color: #343a40;
-    /* Màu chữ cho item */
     transition: background-color 0.3s;
-    /* Hiệu ứng chuyển màu khi hover */
 }
 
 .sidebar .dropdown-item:hover {
     background-color: #e9ecef;
-    /* Màu nền khi hover */
     color: #212529;
-    /* Màu chữ khi hover */
 }
 
 

@@ -38,7 +38,7 @@
 
                     // Kiểm tra file ảnh cho sự kiện mới
                     if (isset($_FILES['event_img']) && $_FILES['event_img']['error'] == 0) {
-                        $target_dir = "uploads/";
+                        $target_dir = "../uploads/";
                         $event_image = $target_dir . basename($_FILES["event_img"]["name"]);
 
                         // Di chuyển file vào thư mục uploads
@@ -73,7 +73,7 @@
 
                     // Kiểm tra file ảnh cho bài viết chi tiết
                     if (isset($_FILES['img']) && $_FILES['img']['error'] == 0) {
-                        $target_dir = "uploads/";
+                        $target_dir = "../uploads/";
                         $post_image = $target_dir . basename($_FILES["img"]["name"]);
 
                         // Di chuyển file vào thư mục uploads
@@ -92,17 +92,17 @@
                     if ($stmtDetail->execute()) {
 
                         echo "<script>
-                        Swal.fire({
-                            title: 'Post thành công!',
-                            icon: 'success',
-                            confirmButtonText: 'OK'
-                        }).then((result) => {
-                            if (result.isConfirmed) {
-                                localStorage.setItem('showEvents', true);
-                                window.location.href = '../../Front-End/admin/admin.php';
-                            }
-                        });
-                        </script>";
+                    Swal.fire({
+                        title: 'Post thành công!',
+                        icon: 'success',
+                        confirmButtonText: 'OK'
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            localStorage.setItem('showEvents', true);
+                            window.location.href = '../../Front-End/admin/admin.php';
+                        }
+                    });
+                    </script>";
                     } else {
                         throw new Exception("Lỗi khi chèn vào bảng event_detail.");
                     }
@@ -118,47 +118,74 @@
             $stmt->bindParam(':del', $id);
             if ($stmt->execute()) {
                 echo "
-                            <script>
-                                Swal.fire({
-                                title: 'Xóa thành công!',
-                                icon: 'success',
-                                confirmButtonText: 'OK'
-                            }).then((result) => {
-                                if (result.isConfirmed) {
-                                    localStorage.setItem('showEvents', true);
-                                    window.location.href = '../../Front-End/admin/admin.php';
-                                }
-                            });
-                            </script>
-                        ";
+                        <script>
+                            Swal.fire({
+                            title: 'Xóa thành công!',
+                            icon: 'success',
+                            confirmButtonText: 'OK'
+                        }).then((result) => {
+                            if (result.isConfirmed) {
+                                localStorage.setItem('showEvents', true);
+                                window.location.href = '../../Front-End/admin/admin.php';
+                            }
+                        });
+                        </script>
+                    ";
             };
         } else if (isset($_POST["editID"]) && !empty($_POST["editID"])) {
-
             $editID = $_POST["editID"];
             $editNewTitle = $_POST["editTitle"];
             $editSub = $_POST["editSub"];
+            $editImagePath = null;
 
+            $stmtSelect = $conn->prepare("SELECT Event_detail_img FROM event_detail WHERE Event_detail_ID = :id");
+            $stmtSelect->bindParam(':id', $editID);
+            $stmtSelect->execute();
+            $currentImage = $stmtSelect->fetchColumn();
 
-            $stmt = $conn->prepare("UPDATE event_detail SET Event_detail_title = :newTitle, Event_detail_sub = :sub WHERE Event_detail_ID = :id");
+            // Kiểm tra nếu có ảnh được upload
+            if (isset($_FILES['editImage']) && $_FILES['editImage']['error'] == 0) {
+                $target_dir = "../uploads/";
+                $editImagePath = $target_dir . basename($_FILES['editImage']['name']);
+
+                
+                if (!move_uploaded_file($_FILES["editImage"]["tmp_name"], $editImagePath)) {
+                    throw new Exception("Lỗi khi upload file bài viết.");
+                }
+            } else {
+
+                $stmtCurrentImage = $conn->prepare("SELECT Event_detail_img FROM event_detail WHERE Event_detail_ID = :id");
+                $stmtCurrentImage->bindParam(':id', $editID);
+                $stmtCurrentImage->execute();
+                $currentImage = $stmtCurrentImage->fetchColumn();
+
+                $editImagePath = $currentImage;
+            }
+
+            // Câu lệnh SQL để cập nhật thông tin
+            $stmt = $conn->prepare("UPDATE event_detail SET Event_detail_title = :newTitle, Event_detail_sub = :sub, Event_detail_img = :img WHERE Event_detail_ID = :id");
             $stmt->bindParam(':newTitle', $editNewTitle);
             $stmt->bindParam(':sub', $editSub);
+            $stmt->bindParam(':img', $editImagePath);
             $stmt->bindParam(':id', $editID);
+
+
             if ($stmt->execute()) {
                 echo "
-                        <script>
-                                Swal.fire({
-                                    title: 'Sửa thành công!',
-                                    icon: 'success',
-                                    confirmButtonText: 'OK'
-                                }).then((result) => {
-                                    if (result.isConfirmed) {
-                                    localStorage.setItem('showEvents', true);
-                                    window.location.href = '../../Front-End/admin/admin.php';
-                                }
-                            });
-                            </script>
-                        ";
-            };
+                    <script>
+                        Swal.fire({
+                            title: 'Sửa thành công!',
+                            icon: 'success',
+                            confirmButtonText: 'OK'
+                        }).then((result) => {
+                            if (result.isConfirmed) {
+                                localStorage.setItem('showEvents', true);
+                                window.location.href = '../../Front-End/admin/admin.php';
+                            }
+                        });
+                    </script>
+                ";
+            }
         }
     }
     ?>
