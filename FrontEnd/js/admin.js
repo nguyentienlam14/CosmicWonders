@@ -18,7 +18,6 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 });
 
-
 function showContent(sectionId) {
     const sections = document.querySelectorAll('.content > div');
     sections.forEach(function (section) {
@@ -32,16 +31,17 @@ function showContent(sectionId) {
 }
 
 
+
 function addEvent() {
     document.getElementById('add').style.display = 'block';
     document.getElementById('but').style.display = 'none';
-    document.getElementById('editFormContainer').style.display='none';
+    document.getElementById('editFormContainer').style.display = 'none';
 }
 
 function addAstronaut() {
     document.getElementById('add_astronaut').style.display = 'block';
     document.getElementById('but_astronaut').style.display = 'none';
-    document.getElementById('editFormAstronaut').style.display='none';
+    document.getElementById('editFormAstronaut').style.display = 'none';
 }
 
 function back() {
@@ -67,13 +67,13 @@ function backAstronaut() {
 function closeForm() {
     const editFormContainer = document.getElementById('editFormContainer');
     editFormContainer.classList.remove('show');
-    document.getElementById('editFormContainer').style.display='none';
+    document.getElementById('editFormContainer').style.display = 'none';
 }
 
 function closeFormAstronaut() {
     const editFormAstronaut = document.getElementById('editFormAstronaut');
     editFormAstronaut.classList.remove('show');
-    document.getElementById('editFormAstronaut').style.display='none';
+    document.getElementById('editFormAstronaut').style.display = 'none';
 }
 
 function deletePost(Event_detail_ID) {
@@ -131,14 +131,22 @@ function deletePostAstronaut(Astronaut_detail_ID) {
 }
 
 
-function editPost(Event_detail_ID,Event_detail_title, Event_detail_sub) {
+function editPost(Event_detail_ID, Event_detail_title, Event_detail_sub, Event_detail_img) {
     document.getElementById('editID').value = Event_detail_ID;
     document.getElementById('editTitle').value = Event_detail_title;
     document.getElementById('editSub').value = Event_detail_sub;
+
+    // Nếu có ảnh hiện tại, hiển thị nó
+    if (Event_detail_img) {
+        document.getElementById('currentImage').src = '../../BackEnd' + Event_detail_img;
+        document.getElementById('currentImage').style.display = 'block'; // Hiện ảnh nếu có
+    } else {
+        document.getElementById('currentImage').style.display = 'none'; // Ẩn nếu không có ảnh
+    }
+
     document.getElementById('editFormContainer').classList.add('show');
     document.getElementById('editFormContainer').style.display = 'block';
 }
-
 
 
 function confirmUpdate(event) {
@@ -155,7 +163,7 @@ function confirmUpdate(event) {
         confirmButtonText: 'Yes, update it!'
     }).then((result) => {
         if (result.isConfirmed) {
-            event.target.submit(); 
+            event.target.submit();
         }
     });
 
@@ -183,7 +191,7 @@ function confirmUpdateAstronaut(event) {
         confirmButtonText: 'Yes, update it!'
     }).then((result) => {
         if (result.isConfirmed) {
-            event.target.submit(); 
+            event.target.submit();
         }
     });
 
@@ -193,21 +201,37 @@ function confirmUpdateAstronaut(event) {
 
 
 
-document.addEventListener('DOMContentLoaded', function () {
-    const dropdownToggle = document.getElementById('astronautDropdown');
-    const dropdownMenu = document.getElementById('astronautMenu');
+// document.addEventListener('DOMContentLoaded', function () {
+//     const dropdownToggle = document.getElementById('astronautDropdown');
+//     const dropdownMenu = document.getElementById('astronautMenu');
 
-    dropdownToggle.addEventListener('click', function (event) {
-        event.preventDefault(); // Ngăn chặn hành vi mặc định của liên kết
-        dropdownMenu.style.display = dropdownMenu.style.display === 'block' ? 'none' : 'block';
-        dropdownMenu.style.opacity = dropdownMenu.style.display === 'block' ? '1' : '0';
-    });
+//     dropdownToggle.addEventListener('click', function (event) {
+//         event.preventDefault(); // Ngăn chặn hành vi mặc định của liên kết
+//         dropdownMenu.style.display = dropdownMenu.style.display === 'block' ? 'none' : 'block';
+//         dropdownMenu.style.opacity = dropdownMenu.style.display === 'block' ? '1' : '0';
+//     });
 
-    // Đóng dropdown khi nhấp ra ngoài
-    document.addEventListener('click', function (event) {
-        if (!dropdownToggle.contains(event.target) && !dropdownMenu.contains(event.target)) {
-            dropdownMenu.style.display = 'none';
-            dropdownMenu.style.opacity = '0';
-        }
-    });
-});
+//     // Đóng dropdown khi nhấp ra ngoài
+//     document.addEventListener('click', function (event) {
+//         if (!dropdownToggle.contains(event.target) && !dropdownMenu.contains(event.target)) {
+//             dropdownMenu.style.display = 'none';
+//             dropdownMenu.style.opacity = '0';
+//         }
+//     });
+// });
+
+
+function addCelestial() {
+    document.getElementById('add_celestial').style.display = 'block';
+    document.getElementById('but_celestial').style.display = 'none';
+    document.getElementById('editFormContainer').style.display = 'none';
+}
+function backCelestial() {
+    const addCelestial = document.getElementById('add_celestial');
+    const buttonCelestial = document.getElementById('but_celestial');
+
+    if (addCelestial && buttonCelestial) {
+        addCelestial.style.display = 'none';
+        buttonCelestial.style.display = 'block';
+    }
+}

@@ -107,19 +107,19 @@
 }
 
 #add,
-#add_astronaut {
+#add_celestial {
     display: none;
     position: relative;
 }
 
 #but,
-#but_astronaut {
+#but_celestial {
     display: block;
 }
 
 .back {
     position: absolute;
-    top: 25px;
+    top: 10px;
 }
 
 table {
