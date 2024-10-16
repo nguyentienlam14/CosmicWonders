@@ -20,7 +20,7 @@ $celestial_id = $_POST['celestial_id'];
 $celestial_detail_img = $_FILES['celestial_detail_img']['name'];
 
 // Upload ảnh nếu có
-$upload_dir = '';
+$upload_dir = '../uploads/';
 
 if ($_FILES['celestial_detail_img']['error'] == UPLOAD_ERR_OK) {
     if (move_uploaded_file($_FILES['celestial_detail_img']['tmp_name'], $upload_dir . $celestial_detail_img)) {
@@ -48,6 +48,7 @@ $stmt->bindValue(9, $celestial_detail_img);
 
 if ($stmt->execute()) {
     echo "<script>alert('Thêm mới thành công!');</script>";
+    header("location: ../../FrontEnd/admin/admin.php");
 } else {
     echo "<script>alert('Lỗi: " . $stmt->errorInfo()[2] . "');</script>";
 }

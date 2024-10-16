@@ -16,7 +16,7 @@
 
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-        if (isset($_POST["form_action"])) {
+        if (isset($_POST["form_action"])) { 
             $form_action = $_POST["form_action"];
 
             // THÊM BÀI VIẾT HOẶC SỰ KIỆN MỚI
@@ -91,7 +91,7 @@
                         }).then((result) => {
                             if (result.isConfirmed) {
                                 localStorage.setItem('showEvents', true);
-                                window.location.href = '../../Front-End/admin/admin.php';
+                                window.location.href = '../../FrontEnd/admin/admin.php';
                             }
                         });
                         </script>";
@@ -118,7 +118,7 @@
                             }).then((result) => {
                                 if (result.isConfirmed) {
                                     localStorage.setItem('showEvents', true);
-                                    window.location.href = '../../Front-End/admin/admin.php';
+                                    window.location.href = '../../FrontEnd/admin/admin.php';
                                 }
                             });
                             </script>

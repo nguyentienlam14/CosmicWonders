@@ -42,7 +42,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Kiểm tra xem có file ảnh mới không
     if (!empty($_FILES['celestial_detail_img']['name'])) {
         $celestial_detail_img = $_FILES['celestial_detail_img']['name'];
-        $target_dir = "uploads/";
+        $target_dir = "../../BackEnd/uploads/";
         $target_file = $target_dir . basename($celestial_detail_img);
         move_uploaded_file($_FILES["celestial_detail_img"]["tmp_name"], $target_file);
     } else {
@@ -177,7 +177,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <label for="celestial_detail_img" class="form-label">Image: </label>
                 <input type="file" class="form-control" id="celestial_detail_img" name="celestial_detail_img">
                 <div class="mt-2">
-                    <img src="../../BackEnd/uploads/ echo htmlspecialchars($celestial_detail['Celestial_detail_img']); ?>" alt="Hình Ảnh">
+                <img src="../../BackEnd/uploads/<?php echo htmlspecialchars($celestial_detail['Celestial_detail_img']); ?>" alt="Hình Ảnh">
                 </div>
             </div>
             <button type="submit" class="btn btn-primary">Update</button>

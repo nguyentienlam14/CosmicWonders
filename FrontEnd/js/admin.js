@@ -111,7 +111,7 @@ function deletePost(Event_detail_ID) {
         if (result.isConfirmed) {
             var form = document.createElement('form');
             form.method = 'post';
-            form.action = '../../Back-End/admin/events_process.php';
+            form.action = '/CosmicWonders2/BackEnd/admin/events_process.php';  
 
             var input = document.createElement('input');
             input.type = 'hidden';

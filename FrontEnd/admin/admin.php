@@ -322,7 +322,7 @@
                                             <td>" . htmlspecialchars($row['Celestial_distance_s_e']) . "</td>
                                             <td>" . htmlspecialchars($row['Celestial_ID']) . "</td>
                                             <td>
-                                                <img src='../../BackEnd/Celestial" . htmlspecialchars($row['Celestial_detail_img']) . "' alt='Hình Ảnh' width='100' height='100'>
+                                                <img src='../../BackEnd/uploads/" . htmlspecialchars($row['Celestial_detail_img']) . "' alt='Hình Ảnh' width='100' height='100'>
                                             </td>
                                             <td>
                                                 <a href='update.php?id=" . $row['Celestial_detail_ID'] . "' class='btn btn-warning btn-sm'>Update</a>   
