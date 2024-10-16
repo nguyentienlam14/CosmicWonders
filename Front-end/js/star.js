@@ -47,5 +47,5 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
-  showPage(1); // Show the first page on load
+  showPage(1);
 });
