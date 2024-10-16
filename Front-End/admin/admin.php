@@ -246,7 +246,7 @@
                     ?>
 
                     <div id="add" class="p-4 bg-light rounded shadow-sm">
-                        <h1 class="text-center mb-4">ADD EVENT AND POST</h1>
+                        
                         <button type="button" class="btn btn-danger back mb-3 d-flex align-items-center" onclick="back()">
                             <i class="fas fa-arrow-left me-2"></i> Back
                         </button>
@@ -255,6 +255,7 @@
                             class="d-flex flex-column align-items-center">
 
                             <input type="hidden" name="form_action" value="insert">
+                            <h3 class="text-center mb-4">ADD NEW EVENT</h3>
 
                             <div class="mb-3 w-75">
                                 <label for="event_title" class="form-label">ADD NEW EVENT</label>
@@ -263,7 +264,7 @@
                             </div>
 
                             <div class="mb-3 w-75">
-                                <label for="event_sub_text" class="form-label">Event Sub Text</label>
+                                <label for="event_sub_text" class="form-label">EVENT SUB TEXT</label>
                                 <textarea name="event_sub_text" id="event_sub_text" class="form-control" placeholder="Event Sub Text"
                                     rows="2"></textarea>
                             </div>
@@ -272,7 +273,9 @@
                                 <label for="event_img" class="form-label">IMAGE FOR NEW EVENT</label>
                                 <input type="file" name="event_img" id="event_img" class="form-control">
                             </div>
-                            <hr>
+
+                            <h3 class="text-center mt-3">ADD POST</h3>
+
                             <div class="mb-3 w-75">
                                 <label for="event_id" class="form-label">SELECT AN EXISTING EVENT TO ADD A POST</label>
                                 <select name="event_id" id="event_id" class="form-control">
@@ -285,12 +288,12 @@
 
                             <div class="mb-3 w-75">
                                 <label for="header" class="form-label">TITLE DETAIL</label>
-                                <input type="text" name="header" id="header" class="form-control" style="height: 50px;">
+                                <input type="text" name="header" id="header" class="form-control" style="height: 50px;" placeholder="Title Detail">
                             </div>
 
                             <div class="mb-3 w-75">
-                                <label for="section_content" class="form-label">SUB TEXT</label>
-                                <textarea name="section_content" id="section_content" class="form-control" rows="4"></textarea>
+                                <label for="section_content" class="form-label">SUB TEXT DETAIL</label>
+                                <textarea name="section_content" id="section_content" class="form-control" rows="4" placeholder="Sub Text Detail"></textarea>
                             </div>
 
                             <div class="mb-3 w-75">
