@@ -20,7 +20,7 @@
         rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <!--Web-logo-->
-    <!-- <link rel="shortcut icon" type="image/x-icon" href="./assets/img/logo/weblogo.png" /> -->
+    <link rel="shortcut icon" type="image/x-icon" href="../assets/img/logo/weblogo.png"/>
     <!-- css -->
     <link rel="stylesheet" href="../css/admin.css" />
 
